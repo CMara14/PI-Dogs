@@ -39,7 +39,7 @@ ACCION CONTROLADORA:
 
 const getDataApi = async()=> {
     const {data} = await axios.get(`https://api.thedogapi.com/v1/breeds?key=${API_KEY}`);//me traigo TODA la info de la api
-    console.log("ESTO ME TRAE LA API: ", data)
+    //console.log("ESTO ME TRAE LA API: ", data)
 //Ahora filtro lo que necesito
     const dogsApi = await data.map(d => {
 
@@ -102,7 +102,7 @@ const getDataDB = async () => {
        const dogDB = await Dog.findAll({
             include:{
                 model: Temperaments,//indico que me traiga el modelo temperaments
-                attributes: ["name"],//le indico que atributos me tiene que traer de ese modelo
+                attributes: ["name"],//Mediante que atributos, le indico que atributos me tiene que traer de ese modelo
                 through:{//comprobacion que va siempre
                     attributes: []
                 }
@@ -125,7 +125,7 @@ return dataTotal;
 router.get("/dogs", async (req, res) => {
     const {name} = req.query
     let allDogs = await getAllData();
-  console.log("ESTO ME TRAE el get de /dogs:" , allDogs)
+ // console.log("ESTO ME TRAE el get de /dogs:" , allDogs)
   
       if (name) {
       try {
@@ -135,7 +135,7 @@ router.get("/dogs", async (req, res) => {
          if (dogName.length) return  res.status(200).send(dogName)
           return res.send("No existe ninguna raza de perro con ese nombre")       
       } catch (error) {
-      console.log(error)
+      console.error(error)
       }
   } else {
       res.send (allDogs)
@@ -149,23 +149,35 @@ router.get("/dogs/:idBreed", async (req, res) => {
     const {idBreed} = req.params
     let allData = await getAllData();
 
-
-if (idBreed) {
-    try {
-        const dogId = await allData.filter(d => d.id == idBreed)
-        if (dogId) {
-            return  res.status(200).send(dogId)
-       console.log(dogId)
-        } else {
-         return res.send("El id ingresado no coincide con ninguna raza de perro")       
-        }
-    } catch (error) {
-        console.log(error)
-    }
-} else {
-    res.send("Faltan datos")
+try {
+    const dogId = await allData.filter(d => d.id == idBreed)
+    dogId.length ? res.status(200).send(dogId) : res.status(400).send("El id ingresado no coincide con ninguna raza de perro")       
+} catch (error) {
+    console.error(error)
 }
+    
 })
+
+
+
+
+
+// if (idBreed) {
+//     try {
+//         const dogId = await allData.filter(d => d.id == idBreed)
+//         if (dogId) {
+//             return  res.status(200).send(dogId)
+//        console.log(dogId)
+//         } else {
+//          return res.send("El id ingresado no coincide con ninguna raza de perro")       
+//         }
+//     } catch (error) {
+//         console.error(error)
+//     }
+// } else {
+//     res.send("Faltan datos")
+// }
+// })
 
 
 
@@ -186,139 +198,64 @@ if (idBreed) {
 
 //----------------------RUTA DEL POST--------------
 
-// router.post("/dog", async (req, res) => {
-//     try {
-//         //POR BODY ME LLEGA UN OBJETO CON LA DATA QUE EL USUARIO LLENA EN EL FORMULARIO PARA CREAR EL NUEVO VIDEOJUEGO, ASI QUE HAGO UN DESTRUCTURING DE ESAS PROPIEDADES
-//         const {name, height_min, height_max, weight_min, weight_max, breed_group, temperament} = req.body
-// //CON EL METODO CREATE LO CREO EN MI BASE DE DATOS PASANDOLE TODAS LAS PROPS QUE ME LLEGARON POR BODY
-// const newDog = await Dog.create({
-//     name,
-//     breed_group,
-//     temperament,
-//     height_min,
-//     height_max,
-//     weight_min,
-//     weight_max
-// })
-// res.status(200).send("Perro creado con éxito");
+router.post("/dog", async (req, res) => {
+    try {
+        //POR BODY ME LLEGA UN OBJETO CON LA DATA QUE EL USUARIO LLENA EN EL FORMULARIO PARA CREAR EL NUEVO VIDEOJUEGO, ASI QUE HAGO UN DESTRUCTURING DE ESAS PROPIEDADES
+        const {name, height_min, height_max, weight_min, weight_max, life_span, temperaments, image} = req.body
+//CON EL METODO CREATE LO CREO EN MI BASE DE DATOS PASANDOLE TODAS LAS PROPS QUE ME LLEGARON POR BODY
+const newDog = await Dog.create({
+    name,
+    life_span,
+    height_min,
+    height_max,
+    weight_min,
+    weight_max,
+    image
+})
+//Temperaments no se lo puedo pasar, TOMO EL QUE ME ENVIARON POR BODY Y debo crear una relacion con los que YA tengo guardados en mi base de datos:
+let tempDB = await Temperaments.findAll({//tengo que encontrar en mi modelo de generos (que ya tengo) todas las que coincidan con el nombre que me llega por body
+    where: {name : temperaments}//como condicion debo tener el mismo nombre del que me llega por body
+}) 
+newDog.addTemperaments(tempDB);//ACA ES DONDE ESTABLEZCO LA RELACION CON LOS GENEROS
+// const relacion = await newVideogame.addTemperaments(tempDB);
+res.status(200).send("Perro creado con éxito");
 
-//     } catch (error) {
-//         console.log(error)
-//     }
-// })
-
-
-        // //genres no se lo puedo pasar, TOMO EL QUE ME ENVIARON POR BODY Y debo crear una relacion con los que YA tengo guardados en mi base de datos:
-        // let genreDB = await Genres.findAll({//tengo que encontrar en mi modelo de generos (que ya tengo) todas las que coincidan con el nombre que me llega por body
-        //     where: {name : genres}//como condicion debo tener el mismo nombre del que me llega por body
-        // }) 
-        // newVideogame.addGenres(genreDB);//ACA ES DONDE ESTABLEZCO LA RELACION CON LOS GENEROS
-        // // const relacion = await newVideogame.addGenres(genreDB);
-        // res.status(200).send("Videogame creado con éxito");
+    } catch (error) {
+        console.log(error)
+    }    
+})
 
 
+const variosTemps = async () => {
+ const dbTemps = await Temperaments.findAll({
+    attributes: {
+        exclude: ["createdAt", "updatedAt"],
+    }   
+ })
 
+if (!dbTemps.length) {
+    try {
+          const {data} = await axios.get(`https://api.thedogapi.com/v1/breeds?key=${API_KEY}`);//me traigo 
+          const apiTemperaments = await data.map(d =>  d.temperament?d.temperament.split(", "):[])//
+         const singleTemp = apiTemperaments.flat();
+                     singleTemp?.forEach(async t => {
+                await Temperaments.findOrCreate({
+                     where: {name: t}
+                 })
+             });
+             return(singleTemp)        
+    } catch (error) {
+        console.error(error)
+    }
+// } else {
 
-
-
-
-
-
-//----------------------RUTA DE TEMPERAMENT--------------
-router.get("/temperament", async (req, res) => {
-   //SI EFECITVAMENTE NO HAY NADA EN MI DB HAGO UN PEDIDO A LA API Y ME TRAIGO LOS GENEROS  
- const {data} = await axios.get(`https://api.thedogapi.com/v1/breeds?key=${API_KEY}`);//me traigo TODA la info de la api
-//  console.log(data)
-//Ahora filtro lo que necesito
- const apiTemperaments = await data.map(d =>  d.temperament?d.temperament.split(", "):[])//separar array
+// }
+}};
  
-// res.send (apiTemperaments)
-// console.log(apiTemperaments)
-// })
-const singleTemp = apiTemperaments.flat();
-// res.send(singleTemp)
-// })  
-
-// const singleTemp = apiTemperaments.map(t => {
-// //     res.send(t)
-// // })
-
-// const singleTemp = apiTemperaments.map(t => {
-//     for (let i = 0; i < t.length; i++) {
-//         return t[i];} })
-//         console.log(singleTemp)
-//         res.send(singleTemp);
-//         const result = singleTemp.reduce((t, i) => {
-//             if (!t.includes(i)){
-//                 t.push(i);
-//             }
-//             return t;
-//         }, [])
-//       console.log(result)
-// res.send(result);
-
-    singleTemp?.forEach(async t => {
-       await Temperaments.findOrCreate({
-            where: {name: t}
-        })
-    });
-const allTemperaments = await Temperaments.findAll();
-     res.send(allTemperaments);
- });
-
-
-
-
-
-// const getTemperaments = async () => {
-//     //ME GUARDO EN UNA CONSTANTE TODOS LOS GENEROS QUE TENGO EN MI TABLA "Temperamen" DE BASE DE DATOS CON EL METODO findAll
-//   const tempDB = await Temperaments.findAll({
-//     //EXCLUYO DOS ATRIBUTOS QUE NO QUIERO MOSTRAR
-//       attributes: {
-//           exclude: ["createdAt", "updatedAt"],
-//       }        
-//       });
-//   //A CONTINUACION PREGUNTO: SI NO HAY ALGO EN MI BASE DE DATOS, SI ES ASI QUE SIGA DE LARGO, SINO:
-//       if(!tempDB.length){
-//           try { 
-//             //SI EFECITVAMENTE NO HAY NADA EN MI DB HAGO UN PEDIDO A LA API Y ME TRAIGO LOS GENEROS  
-//             const {data} = await axios.get(`https://api.thedogapi.com/v1/breeds?key=${API_KEY}`);//me traigo TODA la info de la api
-//     console.log(data)
-// //Ahora filtro lo que necesito
-//     const apiTemperaments = await data.map(d => {
-// return {
-//     temperament: d.temperament?d.temperament.split(","):[]//separar array
-//         };
-//     });
-//    return dogsApi;    
-            
-            
-
-
-
-
-//             const apiTemperaments = await axios.get(`https://api.rawg.io/api/Temperaments?key=${API_KEY}`)
-          
-//             //ME GUARDO EN UNA CONSTANTE ESE RESULTADO QUE ME LLEGA COMO UN ARREGLO DE OBJETOS DE DONDE YO SOLO QUIERO EL NOMBRE DE CADA GENERO
-//             const allTemp = await apiTemperaments.data.results.map(g => g.name);
-//             //MAPEO ESA CONSTANTE PARA CREARLOS EN MI BASE DE DATOS
-//               allTemperaments.map( async(element) => await Temperaments.findOrCreate(
-//               {//de ese arreglo lo recorro con async await porque no se cuanto se va a demorar, y que por cada elemento (que seria el genero) lo busque o lo creo cumpliendo la condicion de que cada nombre sea como el elemento que me pasan en mi tabla Genre
-//                       where: {
-//                           name: element
-//                       }
-//                   }
-//                   )
-//               );
-//               return(allTemperaments)
-//            } catch (error) {
-//               console.log(error)
-//           }
-//       } else{
-//         //SI ESTAN DENTRO DE MI BASE DE DATOS DIRECTAMENTE MAPEO LO QUE TENGO AHI POR NOMBRE.
-//      return tempDB.map(g => g.name)
-//     }
-//   }
+router.get("/temperament", async (req, res) => {
+    const tempsOk = await variosTemps();
+    res.send(tempsOk);
+  });
 
 
 
