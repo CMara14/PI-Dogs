@@ -20,8 +20,23 @@
 const server = require('./src/app.js');
 const { conn } = require('./src/db.js');
 
+//IMPORTAR LOS MODELOS DE LA BASE DE DATOS y AXIOS
+// import axios from "axios";
+// import Temperaments from "./src/models/Temperaments.js";
+
+
 // Syncing all the models at once.
 conn.sync({ force: true }).then(() => {
+
+// //PRECARGAR LOS temperamentos de mi DB
+// const control = await Temperaments.findAll()
+
+// //VERIFICAR SI HAY ALGO EN MI BASE DE DATOS
+// if(control.lenght < 1) {
+//   const pedidoApi = await axios.get()
+// }
+
+
   server.listen(3001, () => {
     console.log('%s listening at 3001'); // eslint-disable-line no-console
   });

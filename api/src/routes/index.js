@@ -199,19 +199,21 @@ try {
 //----------------------RUTA DEL POST--------------
 
 router.post("/dog", async (req, res) => {
-    try {
-        //POR BODY ME LLEGA UN OBJETO CON LA DATA QUE EL USUARIO LLENA EN EL FORMULARIO PARA CREAR EL NUEVO VIDEOJUEGO, ASI QUE HAGO UN DESTRUCTURING DE ESAS PROPIEDADES
-        const {name, height_min, height_max, weight_min, weight_max, life_span, temperaments, image} = req.body
+//POR BODY ME LLEGA UN OBJETO CON LA DATA QUE EL USUARIO LLENA EN EL FORMULARIO PARA CREAR EL NUEVO VIDEOJUEGO, ASI QUE HAGO UN DESTRUCTURING DE ESAS PROPIEDADES
+const {name, height_min, height_max, weight_min, weight_max, life_span, temperaments, image} = req.body
+
+if (name && height_min && height_max && weight_min && weight_max && life_span && temperaments && image) {   
+    try {        
 //CON EL METODO CREATE LO CREO EN MI BASE DE DATOS PASANDOLE TODAS LAS PROPS QUE ME LLEGARON POR BODY
 const newDog = await Dog.create({
-    name,
-    life_span,
-    height_min,
-    height_max,
-    weight_min,
-    weight_max,
-    image
-})
+    name: name,
+    life_span: life_span,
+    height_min: Number(height_min),
+    height_max: Number(height_max),
+    weight_min: Number(weight_min),
+    weight_max: Number(height_max),
+    image: image || "https://cdn.shopify.com/s/files/1/0300/9124/7748/products/mockup-6161d4a6_1000x.jpg?v=1581906455"
+});
 //Temperaments no se lo puedo pasar, TOMO EL QUE ME ENVIARON POR BODY Y debo crear una relacion con los que YA tengo guardados en mi base de datos:
 let tempDB = await Temperaments.findAll({//tengo que encontrar en mi modelo de generos (que ya tengo) todas las que coincidan con el nombre que me llega por body
     where: {name : temperaments}//como condicion debo tener el mismo nombre del que me llega por body
@@ -223,7 +225,51 @@ res.status(200).send("Perro creado con éxito");
     } catch (error) {
         console.log(error)
     }    
+} else {
+    res.status(404).send('Faltan datos');
+}
 })
+
+
+
+// router.post("/dog", async (req, res) => {
+
+
+
+    
+//     try {
+//         //POR BODY ME LLEGA UN OBJETO CON LA DATA QUE EL USUARIO LLENA EN EL FORMULARIO PARA CREAR EL NUEVO VIDEOJUEGO, ASI QUE HAGO UN DESTRUCTURING DE ESAS PROPIEDADES
+//         const {name, height_min, height_max, weight_min, weight_max, life_span, temperaments, image} = req.body
+// //CON EL METODO CREATE LO CREO EN MI BASE DE DATOS PASANDOLE TODAS LAS PROPS QUE ME LLEGARON POR BODY
+
+
+
+// const newDog = await Dog.create({
+//     name,
+//     life_span,
+//     height_min,
+//     height_max,
+//     weight_min,
+//     weight_max,
+//     image
+// })
+// //Temperaments no se lo puedo pasar, TOMO EL QUE ME ENVIARON POR BODY Y debo crear una relacion con los que YA tengo guardados en mi base de datos:
+// let tempDB = await Temperaments.findAll({//tengo que encontrar en mi modelo de generos (que ya tengo) todas las que coincidan con el nombre que me llega por body
+//     where: {name : temperaments}//como condicion debo tener el mismo nombre del que me llega por body
+// }) 
+// newDog.addTemperaments(tempDB);//ACA ES DONDE ESTABLEZCO LA RELACION CON LOS GENEROS
+// // const relacion = await newVideogame.addTemperaments(tempDB);
+// res.status(200).send("Perro creado con éxito");
+
+//     } catch (error) {
+//         console.log(error)
+//     }    
+// })
+
+
+
+
+
 
 
 const variosTemps = async () => {
