@@ -23,12 +23,14 @@ import { getAllDogs } from "../redux/actions";
 //     }, [dispatch]);//si o si le debo pasar el array para que no se me cree un bucle infinito de pedidos
 
 
-export default function Cards() {
+export default function Cards({currentDog}) {
 
     const dispatch = useDispatch()//para usar ese hook tengo que crearme una instancia del mismo, siempre es lo pimero que hago en MI COMPONENTE INTELIGENTE
 
     const allDogs = useSelector((state) => state.dogs) 
     
+//const Dogs = () => {}
+
     //Cuando el componente home se monte, automaticamente se va a mostrar todos los juegos  
         useEffect (() => {//lo mismo que component did mount
             dispatch(getAllDogs())
@@ -39,7 +41,7 @@ export default function Cards() {
   return (
     <div>
       
-{allDogs?.map((d) => (
+{currentDog?.map((d) => (
         <Card
           key={d.id}
           id={d.id}

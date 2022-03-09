@@ -5,7 +5,7 @@ import LandingPage from "./components/LandingPage"
 import Home from "./components/Home";
 import DogDetail from './components/DogDetail';
 import CreateDog from './components/CreateDog';
-import NotFound from './components/NotFound';
+import E404 from './components/E404';
 
 // import NavBar from "./components/NavBar"
 
@@ -14,11 +14,11 @@ function App() {
     <BrowserRouter>
     <div className="App">
        <Routes>
+       <Route path={'/dog'} element = {<CreateDog/>} />
        <Route path={'/home'} element={<Home/>} />
        <Route path={'/dogs/:id'} element={<DogDetail/>}/>
        <Route exact path={'/'} element={<LandingPage />} />
-       <Route path={'/dog'} element = {<CreateDog/>} />
-       <Route path={"*"} element={<NotFound/>} />
+       <Route path={"*"} element={<E404/>} />
        </Routes>
       <h1>Henry Dogs</h1>
     </div>

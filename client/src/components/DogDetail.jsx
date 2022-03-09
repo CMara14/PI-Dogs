@@ -44,9 +44,9 @@ export default function DogDetail() {
 
   return (
     <div>
- <div>
+ <div >
 {myDog && myDog.map((d) => {return (
-  <div key={d.id}>
+  <div  key={d.id}>
     <img src={d.image || "https://cdn.shopify.com/s/files/1/0300/9124/7748/products/mockup-6161d4a6_1000x.jpg?v=1581906455"} alt={`img of ${d.name}`} width="400px" weight="250px" />
     <p>Name: {d.name}</p>
     <p>Height Min: {d.height_min} cm</p>

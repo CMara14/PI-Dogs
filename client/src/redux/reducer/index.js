@@ -12,10 +12,10 @@ import {
 
 const initialState = {
   dogs: [],
-  allDogs: [], //estado que siempre va a tener todos los vg para los filtros
-  allDogs2: [],
+  allDogs: [], //estado que siempre va a tener todos los vg para los filtros. Al usar state.allDogs en lugar de state.dogs, cada vez que aplique un filtro, state.dogs va a cambiar, pero voy a seguir teniendo guardados todos los perros en mi state.allDogs, entonces voy a poder cambiar de filtro sin tener que volver a cargar la página.
   dogDetail: [],
   temperaments: [],
+  // allDogs2: [],
   // orderDogs:, 
   // orderWeights:
 };
@@ -68,7 +68,7 @@ function rootReducer(state = initialState, action) {
         //aDogs: source     
       };
       case FILTER_BY_TEMPS :        
-       const allDogs = state.dogs;
+       const allDogs = state.allDogs;//estado dogs, no repuesto 
        const filteredDogs = 
        allDogs.filter((el) =>
        el.temperament?.includes(action.payload)       
@@ -77,6 +77,28 @@ function rootReducer(state = initialState, action) {
            ...state,
            dogs: filteredDogs,                 
        }
+
+
+
+      //  case FILTER_BY_TEMPERAMENT:
+      //   let aux = []
+      //     if(action.payload) {
+      //     aux = state.dogs.filter(e => {
+      //     if(e.temperament === undefined) {
+      //     return e.temperament }
+      //     else { return e.temperament.includes(action.payload)
+      //     }})
+      //     } else {
+      //     aux=[...state.dogs]
+      //     }
+  
+      //     return {
+      //     ...state,
+      //     allDogs: aux
+      //   };
+
+
+
 
       // case FILTER_BY_SOURCE:
       //   let getVg = state.videogames;
@@ -139,6 +161,7 @@ function rootReducer(state = initialState, action) {
   } else if (action.payload === "min")  {
     orderDogs = state.allDogs.sort(function (d1, d2) {
 //numeros.sort(function(a, b){return a - b}); // --> 3, 12, 23
+
 return d1.weight_min - d2.weight_min
 //if (d2.weight_min - d1.weight_min) { return 1; }
 //numeros.sort(function(a, b){return b - a}); 

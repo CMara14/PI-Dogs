@@ -4,6 +4,7 @@ const { Router } = require('express');
 
 const router = Router();
 
+
 //ME IMPORTO LAS RUTAS
 const dogRoute = require("./Dog")
 const TemperamentRoute = require("./Temperament")
@@ -21,7 +22,7 @@ const {Op} = require("sequelize")
 //MI API KEY COMO VARIABLE
 const {API_KEY}= process.env
 
-//COMO VOY A OBTENER LA INFO DE LA API
+//COMO VOY A OBTENER LA INFO DE LA API ---------estudiar
 const axios = require("axios");
 
 //REQUIERO MIS MODELOS DE LA BASE DE DATOS 
@@ -44,8 +45,11 @@ const getDataApi = async()=> {
     const {data} = await axios.get(`https://api.thedogapi.com/v1/breeds?key=${API_KEY}`);
     const dogsApi = await data.map(d => {
 
-    d.arrWeight = d.weight.metric.split("-")// [3, 6]
+    d.arrWeight = d.weight.metric.split("-")// ["3", "6"]
 
+/* Algunos perros llegan DE LA API con un peso NAN, en vez de string entonces lo que hago es preguntar:
+ si es nan, me lo transforme a 0 para no inventarle un valor, si es un strig que me lo pase a numero directamente. 
+ Si directamente tiene un solo valor string que lo pase a numero*/
     if(d.arrWeight.length === 2){    
         d.weight_min = isNaN(d.arrWeight[0]) ? 0 : parseInt(d.arrWeight[0])
         d.weight_max = isNaN(d.arrWeight[1]) ? 0 : parseInt(d.arrWeight[1])
@@ -102,6 +106,7 @@ const getDataDB = async () => {
                 life_span: d.life_span,
                 breed_group: d.breed_group,
                 temperament: d.temperaments?.map(t=> t.name)
+                //["feliz", "triste", "contento"]
             };
           });
           return arrDogDb;
@@ -119,14 +124,16 @@ return dataTotal;
 
 //----------------------RUTA DE GENERAL + 
 //----------------------RUTA DE QUERY--------------
+///dogs?name=
 router.get("/dogs", async (req, res) => {
     const {name} = req.query
     let allDogs = await getAllData();
  // console.log("ESTO ME TRAE el get de /dogs:" , allDogs)
+ //CANICHE---caniche
+ //cAniChe
   
       if (name) {
-      try {
-      
+      try {      
       const dogName = await allDogs.filter(d => d.name.toLowerCase().includes(name.toLowerCase()));
       
          if (dogName.length) return res.status(200).send(dogName)
@@ -146,18 +153,24 @@ router.get("/dogs/:idBreed", async (req, res) => {
     const {idBreed} = req.params
     let allData = await getAllData();
 try {
+    //== ===
     const dogId = await allData.filter(d => d.id == idBreed)
-    dogId.length ? res.status(200).send(dogId) : res.status(400).send("ID not found")       
+    dogId.length 
+    ? res.status(200).send(dogId) 
+    : res.status(400).send("ID not found")       
 } catch (error) {
     console.error(error)
 }
 })
 
+//
+
+
 
 
 //----------------------RUTA DEL POST--------------
 
-router.post("/dog", async (req, res, next) => {
+router.post("/dog", async (req, res) => {
 const {name, height_min, height_max, weight_min, weight_max, life_span, temperaments, image} = req.body
 // console.log(req.body)
 // if (name && height_min && height_max && weight_min && weight_max && life_span && temperament) {   
@@ -182,9 +195,6 @@ await newDog.addTemperament(tempDB);
 //        })
 //    });
 
-
-
-
 // console.log(temperaments)
 return res.status(200).send("Dog created successfully!");
     // } catch (error) {
@@ -201,18 +211,24 @@ router.get("/temperament", async (req, res) => {
     const {data} = await axios.get(`https://api.thedogapi.com/v1/breeds?key=${API_KEY}`); 
       
     const apiTemperament = await data
-     .map(d => d.temperament)
-    .join()
-    .split(/\s*,\s*/)
-    //console.log(apiTemperament)
+     .map(d => d.temperament)//me llega un arreglo con los strings largos
+    /* [
+        "Stubborn, Curious, Playful, Adventurous, Active, Fun-loving",
+     "Aloof, Clownish, Dignified, Independent, Happy",
+     ]
+     */
+     .join()//me devuelve todo junto en una cadena gigante
+     .split(/\s*,\s*/)//separo en cada uno de los temperamentos del string gigante por elemento
+    // console.log(apiTemperament)
        
     const info = apiTemperament.filter(t => t !== null && t !== undefined && t !== "" )
 
     
-    //Me filtro la info para sacar los temperamentos repetidos 
+   /*  //Me filtro la info para sacar los temperamentos repetidos, se invoca con tres argumentos: El valor de cada elemento, El índice del elemento, El objeto Array que se está recorriendo */
         const dataFiltered = info.filter((item, index, arr) => {
             return arr.indexOf(item) === index
-          })
+          }) 
+         // console.log(dataFiltered)
 
           dataFiltered?.map( async (t) => {
                await Temperament.findOrCreate({
@@ -225,7 +241,7 @@ router.get("/temperament", async (req, res) => {
 
      res.json(tempsTotal);
 
-     console.log(tempsTotal)
+     //console.log(tempsTotal)
      //return//para no hacer muchos pedidos
     } catch (error) {
         console.error(error)

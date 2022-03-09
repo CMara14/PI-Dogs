@@ -9,13 +9,21 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
+import "../styles/LandingPage.css"
+// import styles from '../styles/Landingpage.module.css';
+
+
+
+
 export default function LandingPage(){
     return (
-        <div>
-            <h1>Welcome</h1>
+        <div className="landingPage">
+            <h1 className="welcome_letters">Welcome to the Dogs App</h1>
             <Link to = "/home">
-                <button>HOME</button>
+            <button className="button_landing">HOME</button>
             </Link>
         </div>
     )
 };
+//<button className="button_landing">HOME</button>
+//                <button className={styles.button_landing} >HOME</button>

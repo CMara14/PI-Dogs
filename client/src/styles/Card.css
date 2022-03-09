@@ -1,0 +1,23 @@
+.container-dogCard {
+    flex: 1 0 21%;
+    margin: 5px;  
+    justify-content: space-between;
+}
+
+.card {
+    width: 350px;
+     /*
+    height: 400px; */
+    border-radius: 10%;
+    border: 1px solid #e1ecf7;
+    margin: 20px;
+    background-color: #f8f9fb;
+    box-shadow: 0px 0px 5px 5px #e1ecf7; 
+    text-align: center;
+}
+.card:hover{
+    background-color: #e1ecf7;
+    text-transform: capitalize;
+    width: 360px;
+    
+   }

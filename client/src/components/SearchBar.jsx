@@ -40,18 +40,20 @@ const handleSubmit = (e) => {
  
   return (
    <div>
-       <form onSubmit={handleSubmit}>
+       <form onSubmit={handleSubmit} className="search-box">
         <input
+            //  className={styles.input} 
              type="text" 
              placeholder="Find your favorite dog..."
              onChange={(e) => handleInputChange(e)} 
              value={name} 
         />
         <button 
+            // className={styles.button}
             type="submit"
-             onClick={(e) => handleSubmit(e)}
-        >
-          Search
+            onClick={(e) => handleSubmit(e)}
+        >         
+        Search
         </button> 
         </form>                      
    </div>

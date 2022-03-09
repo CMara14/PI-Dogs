@@ -1,0 +1,59 @@
+// export function validate(input) {
+//     let errors = {}
+
+//     if(!input.name) { //si no hay un nombre
+//         errors.name = 'Name is required'
+//     } else if(!/^[A-Z ]+$/i.test(input.name)) { //solo permita letras
+//         errors.name = 'Name is invalid, please use only letters'
+//     }
+
+//     if(!/^(https?|chrome):\/\/[^\s$.?#].[^\s]*$/.test(input.image)){
+//         errors.image='invalid URL'
+//     }
+
+//     if(!input.heightMin) { //si no ingreso una altura
+//         errors.heightMin='Minimum height is required'
+//     } else if(!/^[0-9]+$/.test(input.heightMin)) { //solo permina numeros del 0 al 9
+//         errors.heightMin='Only numbers are allowed'
+//     } else if(input.heightMin == 0) {
+//         errors.heightMin='Height must not be equal to zero'
+//     }
+//     if(!input.heightMax) {
+//         errors.heightMax='Maximum height is required'
+//     } else if(!/^[0-9]+$/.test(input.heightMax)) {
+//         errors.heightMax='Only numbers are allowed'
+//     } else if(input.heightMax < input.heightMin) {
+//         errors.heightMax='The maximum height must be greater than the minimum height.'
+//     } else if(input.heightMax === input.heightMin) {
+//         errors.heightMax='Heights cannot be equal.'
+//     }
+
+//     if(!input.weightMin) {
+//         errors.weightMin='Minimum weight is required'
+//     } else if(!/^[0-9]+$/.test(input.weightMin)) {
+//         errors.weightMin='Only numbers are allowed'
+//     } else if(input.weightMin == 0) {
+//         errors.weightMin='Weight must not be equal to zero'
+//     }
+//     if(!input.weightMax) {
+//         errors.weightMax='Maximum weight is required'
+//     } else if(!/^[0-9]+$/.test(input.weightMax)) {
+//         errors.weightMax='Only numbers are allowed'
+//     } else if(input.weightMax < input.weightMin) {
+//         errors.weightMax='The maximum height must be greater than the minimum height.'
+//     } else if(input.heightMax === input.heightMin) {
+//         errors.heightMax='Weights cannot be equal.'
+//     }
+
+//     if(!input.life_span) {
+//         errors.life_span='Life expectancy is required'
+//     } else if(!/^[0-9]+$/.test(input.life_span)) {
+//         errors.life_span='only numbers are allowed'
+//     } else if(input.life_span > 20){
+//         errors.life_span='Life expectancy cannot be more than 20 years'
+//     } else if(input.life_span < 8) {
+//         errors.life_span= 'Life expectancy cannot be less than 8 years'
+//     }
+
+//     return errors
+//     }

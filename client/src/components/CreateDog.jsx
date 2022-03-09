@@ -5,6 +5,66 @@ import { Link, useNavigate } from "react-router-dom";
 
 import { postDog, getTemperaments } from "../redux/actions";
 
+//Creo una funcion para validar los inputs
+        function validate(input) {
+         let errors = {};//Me creo un obj porque es lo que voy a tener que devolver en caso de error
+         //Lo pimero que tengo que validar es que si cada input tiene un value, 
+        if (!input.name) {//si el input name no tiene value
+           errors.name = "Name is required";//le creamos una prop al objeto errors         
+        } else if (!/^[A-Z ]+$/i.test(input.name)){//testear solo letras
+            errors.name = "Name is invalid, it must be only letters";
+        } 
+        
+        
+        else if (!input.height_min) {
+          errors.height_min = "Min height is required"
+         } else if (input.height_min <= 0) {//numeros negativos no
+          errors.height_min = "Min height should be greater than 0"
+        } 
+        
+        else if (!input.height_max) {
+          errors.height_max = "Max height is required"
+        }  else if (input.height_max <= 0) {//numeros negativos no
+            errors.height_max = "Max height should be greater than 0"
+        } else if (parseInt(input.height_min) >= parseInt(input.height_max)) { //convierto el peso que me viene en string en un entero para compararlo
+          errors.height_max = "Max height should be greater than Min height"
+        }
+        
+        
+        else if (!input.weight_min) {
+          errors.weight_min = "Min weight is required"
+        } else if (input.weight_min <= 0) {//numeros negativos no
+          errors.weight_min = "Min weight should be greater than 0"
+        } 
+        
+        
+        else if (!input.weight_max) {
+          errors.weight_max = "Max weight is required"
+        } else if (input.weight_min <= 0) {//numeros negativos no
+          errors.weight_min = "Min weight should be greater than 0"
+        } else if (parseInt(input.weight_min) >= parseInt(input.weight_max)) {//numeros negativos no
+          errors.weight_max = "Max weight should be greater than Min weight"
+        } 
+        
+        
+        else if (input.life_span <= 0) {//numeros negativos no
+          errors.life_span = "Life span should be greater than 0"
+        }else if (input.life_span > 20) {
+          errors.life_span  = "Life span should be smaller than 20";
+         // } else if (!input.image) {
+        //  errors.image = "Please insert an image URL";
+       } 
+       
+       
+       else if (!/(http(s?):)([/|.|\w|\s|-])*\.(?:jpg|gif|png)/.test(input.image)) {
+          errors.image = "Image is invalid, it must be an URL"
+        } else if (input.image.length > 255) {
+          errors.image = "Please insert a correct URL image";
+        }  
+        return errors;
+    };
+    // }
+
 export default function CreateDog() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -28,61 +88,31 @@ export default function CreateDog() {
 
   // //me defino un estado local como objeto vacio para poder setear los errores, modificando las props
        const [errors, setErrors] = useState({})
+        // name: "",
+        // height_min: "",
+        // height_max: "",
+        // weight_min: "",
+        // weight_max: "",
+        // life_span: "",
+        // image: "",
+        // temperaments: [],
 
-// //Creo una funcion para validar los inputs
-        function validate(input) {
-         let errors = {};//Me creo un obj porque es lo que voy a tener que devolver en caso de error
-         //Lo pimero que tengo que validar es que si cada input tiene un value, 
-        if (!input.name) {//si el input name no tiene value
-           errors.name = "Name is required";//le creamos una prop al objeto errors         
-        // else if ( .test(input.name)){//testear solo letras
-        //     errors.name = "Name is invalid, it must be only letters";
-        } else if (!input.height_min) {
-          errors.height_min = "Min height is required"
-        } else if (input.height_min <= 0) {//numeros negativos no
-          errors.height_min = "Min height should be greater than 0"
-        } else if (!input.height_max) {
-          errors.height_max = "Max height is required"
-        }  else if (input.height_max <= 0) {//numeros negativos no
-            errors.height_max = "Max height should be greater than 0"
-        } else if (parseInt(input.height_min) >= parseInt(input.height_max)) { //convierto el peso que me viene en string en un entero para compararlo
-          errors.height_max = "Max height should be greater than Min height"
-        } else if (!input.weight_min) {
-          errors.weight_min = "Min weight is required"
-        } else if (input.weight_min <= 0) {//numeros negativos no
-          errors.weight_min = "Min weight should be greater than 0"
-        } else if (!input.weight_max) {
-          errors.weight_max = "Max weight is required"
-        } else if (input.weight_min <= 0) {//numeros negativos no
-          errors.weight_min = "Min weight should be greater than 0"
-        } else if (parseInt(input.weight_min) >= parseInt(input.weight_max)) {//numeros negativos no
-          errors.weight_max = "Max weight should be greater than Min weight"
-        } else if (!input.image) {
-         errors.image = "Please insert an image URL";
-        } else if (!/(http(s?):)([/|.|\w|\s|-])*\.(?:jpg|gif|png)/.test(input.image)) {
-          errors.image = "Image is invalid, it must be an URL"
-        } else if (input.image.length > 255) {
-          errors.image = "Please insert a correct URL image";
-        } else if (input.life_span <= 0) {//numeros negativos no
-          errors.life_span = "Life span should be greater than 0"
-        }else if (input.life_span > 20) {
-          errors.life_span  = "Life span should be smaller than 20";
-        } 
-        return errors;
-      };
          
   function handleChange(e) {
     console.log(e.target.value)
-    setInput((prev) => ({ 
-      ...prev,
+    setInput({ 
+      ...input,
       [e.target.name]: e.target.value,
-          }));
+          });
     setErrors(validate({
-      ...input, 
-      [e.target.name]: e.target.value,
-    })); //seteo el estado errors con el nuevo valor que acabo de mofidicar    
+    ...input, 
+    [e.target.name]: e.target.value,
+  })); //seteo el estado errors con el nuevo valor que acabo de modificar   
     console.log(input)  
   };
+
+  // errors, 
+  // e.target.name
 
 
   function handleSelect(e) {
@@ -121,7 +151,7 @@ export default function CreateDog() {
   }
 
   return (
-    <div>
+    <div >
       <Link to="/home">
         {" "}
         <button>Return</button>
@@ -132,7 +162,7 @@ export default function CreateDog() {
         <div>
           <label>Name: </label>
           <input
-            key="name"
+            // key={input.name}
             type="text"
             value={input.name}
             name="name"
@@ -246,8 +276,10 @@ export default function CreateDog() {
           ))}
              </div>
           </div>                 
-        </div>
+        </div >
+        <div >
         <button type="submit">Create</button>
+        </div>
       </form>
     </div>
   );
