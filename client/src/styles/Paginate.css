@@ -1,0 +1,61 @@
+.paginado{
+/* border: none;
+  text-align: center ;
+  display: inline-flex;  */
+
+  display: flex;
+  direction: row;
+  flex-wrap: wrap;
+  justify-content: center; 
+  /* space-evenly; */
+  align-items: stretch;
+}
+
+.number{
+  width: 3em;
+  margin: 4px;
+  border: none;
+  background-color:#FFCDB2;
+  cursor: pointer;
+  border-radius: 10%;
+  flex-direction: row;
+  font-weight: bold;
+  border: medium;
+  /* color: midnightblue;
+  float: left;
+  text-align: center;
+  text-decoration: none;
+  font-family:  inherit;
+  outline:none; */
+}
+.numberButton{
+  border: medium;
+  border-color: black;
+  color: #fff1e6;
+  background-color:  #362D25;
+  /* background-color:#FFCDB2; */
+  width: 36px;
+  /* padding: 16px 20px; */
+  font-size: 25px;
+  padding: -3px;
+  padding-left: 10px;
+  padding-right: 10px;
+  /* margin: 10px; */
+  cursor: pointer;
+  
+}
+
+.numberButton:hover{
+background-color: red;
+color: black; 
+}
+
+
+.numberButton:focus{
+  background-color: black;
+  color: white;
+}
+/* 
+.number:hover{
+    background-color: orange;
+} */

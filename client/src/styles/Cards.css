@@ -1,0 +1,56 @@
+*{
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  }
+
+
+ 
+ 
+ .dogsCards {
+   
+margin: 2%;
+display: flex;
+flex-wrap: wrap;
+justify-content: space-evenly;
+   
+   /* display: flex;
+   flex-wrap: wrap;
+   justify-content: space-evenly;
+   margin: 25px 0 0 0;
+   background-color: #6D6875; */
+   
+  }
+  
+  /* display: flex;
+  flex-direction: row;
+  flex-wrap: wrap; */
+
+
+/* display: grid;
+justify-items: center;
+align-items: center;
+grid-template-columns: repeat(4, 1fr);
+ */
+
+/* .container-dogs {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  border: 1px solid black;
+  background: #cccccc;
+} */
+
+    /* border: 1px solid black;
+}
+   
+/* .dogsCards {
+    display: flex;
+    flex-direction: row;
+   } */
+   
+
+   /* 
+   display: flex;
+   
+   */

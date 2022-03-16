@@ -2,44 +2,79 @@
 BOTON
 LETRAS DE BIENVENIDA
 CONTENEDORES */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
 
-/* 
-body {
-    background-image: url("https://i.pinimg.com/564x/e5/d4/a6/e5d4a66213157d10a1ede22cfa22113b.jpg")
+/* body {  } */
 
-} */
+/* display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    margin: 5%; */
 
+/* background-image: url("https://i.pinimg.com/564x/e5/d4/a6/e5d4a66213157d10a1ede22cfa22113b.jpg") */
 .landingPage {
-    
-    display: grid;
-    width: 100%;
-    height: 100%;
-    /* object-fit: cover;
-    background-size: 100%; */ 
-    background-image: url('https://images7.alphacoders.com/650/thumbbig-650887.webp') 
-    /* background-image: ('286398c9417c83a294e956ac2c36ae3f.jpg') */
-    
+  /* fondo azul */
+  /* background-image: url("../assets/adorable-entero.jpg"); */
+  display: flex;
+  align-items: center;
+  /* justify-content: center; */
+  flex-wrap: wrap;
+  flex-direction: column;
+  min-height: 100vh;
+  background-size: cover;
+  /* background-position: 33% 35%;   */
+  /* fondo blanco */
+  background-image: url("../assets/adorable-white-bulldog-puppy-portrait\ \(1\).jpg");
+  background-position: 33% 100%;
 
+  /*     
+    width: 100%;
+    height: 100%; 
+     position: absolute;  */
+
+  /* Escala la imagen al mayor tamaño posible sin estirarla. Si las proporciones de la imagen difieren de las del elemento, es recortada vertical u horizontalmente para que no quede un espacio vacío. */
+}
+
+.containerbuttonlanding {
+  width: 100%;
+  height: 100%;
 }
 
 .button_landing {
-    /* background-color: antiquewhite;
-    padding: 0.5em 1.5em;
-    cursor: pointer; */
-    margin-top: 1.3em;
-    border-color: transparent;
-    border-radius: 5px 30px 45px 60px;
-    color:black;
-    font-family: calibri;
-    background-color: #ed5bf0;
-    height: 2em;
-    
+  margin: 0;
+  margin-top: 4%;
+  position: relative;
+  display: inline-block;
+  padding: 15px 20px;
+  background: #e5989b;
+  color: rgb(59, 20, 20);
+  width: auto;
+  text-transform: uppercase;
+  height: auto;
+  font-size: 20px;
+  overflow: hidden;
+  transition: 0.2s;
+  border: solid 3px;
+  border-radius: 7px;
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+  cursor: pointer;
+  transition: 0.5;
 }
 
-.button_landing:hover{/*  */
-    background-color: aliceblue;
+.button_landing:hover {
+  /*  */
+  color: aliceblue;
 }
 
-.welcome_letters{ 
-
+.welcomeLetters {
+  height: 53%;
+  margin-top: 4%;
+  width: 100%;
+  /* margin-bottom: -31%; */
+  font-size: 50px;
+  font-family: "gabriola";
 }

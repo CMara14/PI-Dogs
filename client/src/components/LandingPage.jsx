@@ -7,7 +7,7 @@
 // [ ] Botón para ingresar al home (Ruta principal) */
 
 import React from "react";
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 
 import "../styles/LandingPage.css"
 // import styles from '../styles/Landingpage.module.css';
@@ -18,12 +18,17 @@ import "../styles/LandingPage.css"
 export default function LandingPage(){
     return (
         <div className="landingPage">
-            <h1 className="welcome_letters">Welcome to the Dogs App</h1>
-            <Link to = "/home">
-            <button className="button_landing">HOME</button>
-            </Link>
+            <h1 className="welcomeLetters">Welcome to the Dogs App</h1>
+            <NavLink to = "/home" className="containerbuttonlanding">
+            <button className="button_landing">HOME🐾</button>
+            </NavLink>
         </div>
     )
 };
 //<button className="button_landing">HOME</button>
 //                <button className={styles.button_landing} >HOME</button>
+
+
+/* 
+
+ */

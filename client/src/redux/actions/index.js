@@ -45,6 +45,11 @@ export const getDogName = (name) => {
                 payload: data
             })
         } catch(err) {
+            dispatch({
+                type: "GET_DOG_NAME",
+                payload: []
+            })
+            /* le digo que me traiga un arreglo vacio  */
             console.log(err)
         }
     }
@@ -85,54 +90,25 @@ export const getTemperaments = () => {
 
 
 //---------------------RUTA POST-----------------
-// export function postDog (newDog) {
-//     return async function () {
-//         try {
-//             const { data } = await axios.post(`http://localhost:3001/dog`, newDog)
-//             //console.log(data)
-//             return data
-//           } catch(err) {
-//             console.log(err)
-//         }
-//     }
-// }
-
-
-
-
-export function postDog (payload) {
-    return async function () {
-      try {
-        const response = await axios.post("http://localhost:3001/dog", payload);
-        return response;
-      } catch (error) {
-        console.log(error);
-      }
-    };
-  }
-
-
-
-// export const postDog = (newDog) => {
-//     return async (dispatch) => {
-//         try {
-//             const { data } = await axios.post(`http://localhost:3001/dog`, newDog)
-//             console.log(data)
-//             return dispatch({
-//                 type: "POST_DOG",
-//                 payload: data
-//             })
-//         } catch(err) {
-//             console.log(err)
-//         }
-//     }
-// }
+export const postDog = (newDog) => {
+    return async (dispatch) => {
+        try {
+            const { data } = await axios.post(`http://localhost:3001/dog`, newDog)
+            console.log(data)
+            return dispatch({
+                type: "POST_DOG",
+                payload: data
+            })
+        } catch(err) {
+            console.log(err)
+        }
+    }
+}
 
 
 
 
 //-----------------ORDENAMIENTOS------------------
-//_____________ALFABETICO
 export function sortBy(payload) {
     console.log(payload)
             return {
@@ -174,3 +150,35 @@ export const filterByTemps = (payload) => {
                 payload
             })
      }
+
+//ORDENAMIENTO:
+//ALFABETICAMENTE
+
+//POR PESO
+
+
+//FILTRADO:
+//BASE DE DATOS
+
+//TEMPERAMENTOS
+
+
+     //PUT
+
+     //DELETE
+// export const deleteDog = (id) => {
+//     return async (dispatch) => {
+// try {
+//     const {data} =
+// } catch (error) {
+    
+// }
+
+//         type: "DELETE_DOG"
+//         payload:  
+//     }
+// }
+
+
+
+     //BUSCAR ALGO QUE NO ES EN LA RUTA

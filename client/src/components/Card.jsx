@@ -5,30 +5,36 @@ import "../styles/Card.css"
 
 export default function Card ({image, name, temperament, weight_max, weight_min, id}) {
     return (
-      <div className="container-dogCard">
-        
-          <div>
+      <div className='container'>          
+          <div className="dogcard">
+          
+          <Link to={`/dogs/${id}`}>
             <img 
-              className="card"
-              src={image }
+              className="cardImage"
+              src={image}
               alt={`img of ${name}`}
               width="400px" height="250px"
-            />
-          </div>
-        <div>
-          <div>
-            <h1>{name}</h1>
-          </div>
-          <div>
-            <span>Temperament: {temperament?.join(' - ') }</span>
-          </div>
-          <div>
-            <span>Weight: </span>
-            <p> {weight_min} Kg</p>
-            <p>{weight_max} Kg</p>
-          </div>
-          </div>
-        <Link to={`/dogs/${id}`}>About...</Link>
+              />           
+            </Link>
+            
+           <div className='info'>
+          <h3 className='titleName'>{name}</h3>           
+              <p className='tempCard'>
+                <strong>Temperament:</strong>
+            
+            <br />
+              {temperament
+              ? temperament.join(' - ')
+              : "No temperaments" }</p>          
+            <p className='weightCard'> 
+            <strong>Weight: </strong>            
+              <br />
+              {weight_min} Kg - {weight_max} Kg</p>
+          </div>            
+                          
+             </div>  
+    
+    
       </div>
     );
 }
@@ -36,4 +42,6 @@ export default function Card ({image, name, temperament, weight_max, weight_min,
 
 
 
-
+/* <div className="dogAbout">
+        About...
+    </div> */

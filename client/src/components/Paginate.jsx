@@ -1,5 +1,5 @@
 import React from "react";
-
+import "../styles/Paginate.css"
 
 //componente que solo me renderiza los numeros en la pantalla
 export default function Paginado ({dogsPerPage, allDogs, paginate}) {//me traigo las constantes de home
@@ -22,33 +22,37 @@ for (let i = 1; i <= Math.ceil(allDogs / dogsPerPage); i++) {
 2)le paso un boton para que cuando le haga click le voy a pasar mi paginado (la constante que declare en home) a la cual le paso el numero de mi pagina 
 Luego solo renderizo ese numero es decir por separado.
  */
+// return (
+//     <nav >
+//         <ul className="paginado"  >                              
+//             { pageNumbers && pageNumbers
+//             .map((number) => (
+//             <li className="number" key={number} > 
+//             <button onClick={() => paginate(number)} >  {number}</button>
+//             </li>
+//              ))}                   
+//         </ul>
+//     </nav>
+//     );
+// };
+
 return (
-    <nav >
+   
         <div className="paginado"  >                              
             { pageNumbers && pageNumbers
             .map((number) => (
-            <span className="number" key={number} > 
-            <button onClick={() => paginate(number)} >  {number}  </button>
-            </span>
+                
+            //  <div className="number" key={number} > 
+            <button className="numberButton" onClick={() => paginate(number)} >  {number}  </button>
+             // </div> 
              ))}                   
         </div>
-    </nav>
+    
     );
 };
 
 // {/* /*
 //   {
 
-//   return (
-//     <nav>
-//       <div>
-//         {p.map((num) => (
-//           <button onClick={() => paginate(num)}>{num}</button>
-//         ))}
-//       </div>
-//     </nav>
-//   );
-// }
-//  */}
 
 

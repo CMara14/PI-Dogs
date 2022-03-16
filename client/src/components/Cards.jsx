@@ -1,10 +1,13 @@
 import React from 'react';
+import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import {useEffect } from "react";
-
+import { Link } from 'react-router-dom';
 // useState, 
+import "../styles/Cards.css"
 
 import Card from './Card';
+import Loading from "./Loading";
+
 
 import { getAllDogs } from "../redux/actions";
 
@@ -24,24 +27,25 @@ import { getAllDogs } from "../redux/actions";
 
 
 export default function Cards({currentDog}) {
-
     const dispatch = useDispatch()//para usar ese hook tengo que crearme una instancia del mismo, siempre es lo pimero que hago en MI COMPONENTE INTELIGENTE
 
-    const allDogs = useSelector((state) => state.dogs) 
+    //const allDogs = useSelector((state) => state.dogs) 
     
 //const Dogs = () => {}
+
 
     //Cuando el componente home se monte, automaticamente se va a mostrar todos los juegos  
         useEffect (() => {//lo mismo que component did mount
             dispatch(getAllDogs())
         }, [dispatch]);
-    
-
+        
+     
 
   return (
-    <div>
+    <div className="dogsCards">
       
 {currentDog?.map((d) => (
+ 
         <Card
           key={d.id}
           id={d.id}
@@ -51,12 +55,17 @@ export default function Cards({currentDog}) {
           weight_min= {d.weight_min} 
           weight_max= {d.weight_max}           
         />
+      
       ))}
     </div>
   )
 }
 
 /*
+
+   <Link to={"/home/" + d.id}>  
+     </Link>
+
 ? d.temperament.join(' - ') : d.temperaments
           temperament={d.temperament.join(', ')}
 
