@@ -2,3 +2,36 @@
     font-size: 70px;
     font-family: "gabriola";
 }
+
+.containerError{
+display: flex;
+justify-content: center; 
+margin: 0;
+}
+.return{
+    margin: 0;
+    margin-top: 12%;   
+   position: relative;
+   display: inline-block;
+   
+   padding: 15px 4px;
+   background: #dd4d5e;  
+   /* background: #e5989b; */
+   
+   color: rgb(12, 12, 12);
+   width: auto;
+   text-transform: uppercase;
+   height: auto;
+   font-size: 20px;
+   overflow: hidden;
+   transition: 0.2s;
+   border-radius:7px;
+   font-family: "carlito";
+   cursor: pointer;
+   border: solid 3px;
+   transition: .5;
+}
+
+.return:hover{
+    color: rgb(248, 241, 241);
+}

@@ -6,6 +6,7 @@ import { getAllDogs } from "../redux/actions";
 import { useDispatch } from "react-redux";
 
 import "../styles/NavBar.css";
+import icon from "../assets/refresh.png"
 
 export default function NavBar() {
   const dispatch = useDispatch();
@@ -25,9 +26,9 @@ export default function NavBar() {
         <SearchBar />
       </div>
      
-        <div>
+        <div className="divrefresh">
           <button className="refreshNavBar" onClick={(e) => handleRefresh(e)}>
-            Refresh 
+                       Refresh {""}{""}{""} <img className="refresh" src={icon} alt="" />
           </button>
         </div>
             <div className="contenedorCreate">

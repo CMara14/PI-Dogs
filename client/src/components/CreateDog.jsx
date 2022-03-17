@@ -223,95 +223,65 @@ export default function CreateDog() {
   }
 
   return (
-    <div className="containerInfoCreate">
+    <div className="bodyForm">
+      
+     
+        {/* className="formDog" */}
+        <form className="formCreate" onSubmit={(e) => handleSubmit(e)}>
 
-      <div className="containertitleCreate">
-        <h1 className="titleCreate">¡Create your dog! </h1>
-      </div>
-
-      {/* className="formDog" */}
-      <form className="formCreate" onSubmit={(e) => handleSubmit(e)}>
+         
+                  <h1 className="titleCreate">¡Create your dog! </h1>
         
-        
-        {/* <div className="containerLeftcreate"> */}
-         
-         
-         
-          <label className="inputLabel">Name: </label>
-          <input
-            // key={input.name}
-            key="name"
-            type="text"
-            value={input.name}
-            name="name"
-            onChange={(e) => handleChange(e)}
-            required
-            className="inputBox"
-          />
-          <strong className="errors">{errors.name}</strong>
-          <label className="inputLabel">Image URL: </label>
-          <input
-            // key="image"
-            type="url"
-            value={input.image}
-            name="image"
-            onChange={(e) => handleChange(e)}
-            autoComplete="off"
-            className="inputBox"
-            placeholder="URL"
-            maxLength="255"
-          />{" "}
-          <strong className="errors"> {errors.image}</strong>
-          <div className="contenedorImage">
-          <img
-            className="imageCreate"
-            src={input.image || icon}
-            // width="100px"
-            // height="100px"
-            alt="Dog_image"
-          />
-          {/* </div> */}
-
-          <div className="tempsdiv">
-
-          <label className="inputLabel">Temperaments: </label>
-
-          <select
-            defaultValue=""
-            className="selectCreate"
-            onChange={(e) => handleSelect(e)}
-          >
-            <option value="" disabled hidden>
-              Select Temperaments...
-            </option>
-            {temps?.map((temp) => (
-              <option value={temp.name} key={temp.id} name="temperaments">
-                {temp}
-              </option>
-            ))}
-          </select>
-       
-          {input.temperaments.map((t) => (
-            <div className="box_opcion" key={t}>
-              <div className="opcion_title">
-                <p>{t}</p>
+          <div className="containerform">
+              {/* <div className="containerLeftcreate"> */}
+              <div className="group">
+                <label className="inputLabel">Name: </label>
+                <input
+                  // key={input.name}
+                  key="name"
+                  type="text"
+                  value={input.name}
+                  name="name"
+                  onChange={(e) => handleChange(e)}
+                  required
+                  className="inputBox"
+                />
+                <strong className="errors">{errors.name}</strong>
               </div>
-              <button
-                className="btn_remove"
-                onClick={() => handleDelete(t)}
-                key={t}
-                value={t}
-              >
-                x
-              </button>
-            </div>
-          ))}
-          <strong className="errors">{errors.temperaments}</strong>
-          </div>
 
-            
-            
-            {/* <div className="containerRightcreate"> */}
+              <div className="group">
+              <label className="inputLabel">Image URL: </label>
+              
+                <input
+                  // key="image"
+                  type="url"
+                  value={input.image}
+                  name="image"
+                  onChange={(e) => handleChange(e)}
+                  autoComplete="off"
+                  className="inputBox"
+                  placeholder="URL"
+                  maxLength="255"
+                />{" "}
+                <strong className="errors"> {errors.image}</strong>          
+                  {/* <img
+                    className="imageCreate"
+                    src={input.image || icon}
+                    // width="100px"
+                    // height="100px"
+                    alt="Dog_image"
+                  /> */}
+              
+              
+
+
+                {/* </div> */}
+              </div>
+
+
+                
+              <div className="group">
+
               <label className="inputLabel">Height: </label>
               <input
                 // key="height_min"
@@ -325,6 +295,7 @@ export default function CreateDog() {
                 min="0"
               />
               <strong className="errors">{errors.height_min}</strong>
+              <br />
               <input
                 // key="height_max"
                 type="number"
@@ -337,6 +308,9 @@ export default function CreateDog() {
                 min="0"
               />
               <strong className="errors">{errors.height_max}</strong>
+</div>
+
+<div  className="group">
               <label className="inputLabel">Weight: </label>
               <input
                 // key="weight_min"
@@ -350,6 +324,7 @@ export default function CreateDog() {
                 min="0"
               />
               <strong className="errors"> {errors.weight_min}</strong>
+            <br />
               <input
                 // key="weight_max"
                 placeholder="Max.."
@@ -362,7 +337,11 @@ export default function CreateDog() {
                 min="0"
               />{" "}
               <strong className="errors"> {errors.weight_max}</strong>
-              <br />
+            
+
+</div>
+<div className="group">
+
               <label className="inputLabel"> Life Span: </label>
               <input
                 type="number"
@@ -375,6 +354,7 @@ export default function CreateDog() {
                 min="0"
               />
               <strong className="errors">{errors.minlife_span}</strong>
+              <br />
               <input
                 // key="height_max"
                 type="number"
@@ -387,28 +367,71 @@ export default function CreateDog() {
                 min="0"
               />
               <strong className="errors"> {errors.maxlife_span}</strong>
-     
-          {/* </div> */}
-      
-<div className="containerButtons">
-  <div className="containerButtonreturn">
-    <button
-      className="buttonCreate"
-      type="submit"
-      onSubmit={(e) => handleSubmit(e)}
-    >
-      Create
-    </button>
 
-    <button className="buttonReturn">
-      <NavLink className="navLink" to="/home">
-        Cancel
-      </NavLink>
-    </button>
-  </div>
-  </div>
-  </div>
-      </form>
+</div>
+
+              {/* <div className="containerRightcreate"> */}
+              {/* </div> */}
+                <div className="group">
+                  <label className="inputLabel">Temperaments: </label>
+
+                  <select
+                    defaultValue=""
+                    className="selectCreate"
+                    onChange={(e) => handleSelect(e)}
+                  >
+                    <option value="" disabled hidden>
+                      Select Temperaments...
+                    </option>
+                    {temps?.map((temp) => (
+                      <option
+                        value={temp.name}
+                        key={temp.id}
+                        name="temperaments"
+                      >
+                        {temp}
+                      </option>
+                    ))}
+                  </select>
+<div className="optionsTemps">
+
+                  {input.temperaments.map((t) => (
+                    <div className="box_opcion" key={t}>
+                      <div className="opcion_title">
+                        <p>{t}</p>
+                      </div>
+                      <button
+                        className="btn_remove"
+                        onClick={() => handleDelete(t)}
+                        key={t}
+                        value={t}
+                      >
+                        x
+                      </button>
+                    </div>
+                  ))}
+</div>
+                  <strong className="errors">{errors.temperaments}</strong>
+                </div>
+              <div className="containerButtons">
+                <div className="containerButtonreturn">
+                  <button
+                    className="buttonCreate"
+                    type="submit"
+                    onSubmit={(e) => handleSubmit(e)}
+                  >
+                    Create
+                  </button>
+
+                  <button className="buttonReturn">
+                    <NavLink className="navLink" to="/home">
+                      Cancel
+                    </NavLink>
+                  </button>
+                </div>
+                </div>
+          </div>
+        </form>
       
     </div>
   );

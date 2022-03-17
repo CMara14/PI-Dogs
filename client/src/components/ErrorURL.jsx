@@ -7,12 +7,17 @@ import "../styles/ErrorURL.css"
 export default function ErrorURL() {
 
   return (
-    <div>     
-      <h1 className='titleErrorUrl'>where do you want to go?</h1> 
-      <NavLink to="/">
+    
+    <div>
+      <div >     
+      <h1 className='titleErrorUrl'>ERROR 404: URL not found</h1> 
       <img src={icon} alt="" />
-      <button className=''>Return</button>
+    </div>
+    <div className='containerError'>
+      <NavLink to="/">
+      <button className='return'>Return</button>
       </NavLink>
+    </div>
     </div>    
   )
 }

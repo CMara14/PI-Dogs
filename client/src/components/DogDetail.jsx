@@ -9,6 +9,7 @@ import { Link } from "react-router-dom";
 import { useParams } from "react-router";
 
 import "../styles/DogDetail.css";
+import image from "../assets/perroCreate.jpg"
 
 //me importo la action que se va a dispachar
 import { getDogDetail } from "../redux/actions";
@@ -60,10 +61,7 @@ const [load, setLoad] = useState(true)
                   <h2 className="titleDetail">{d.name}</h2>
                   <img
                     className="imageDetail"
-                    src={
-                      d.image ||
-                      "https://cdn.shopify.com/s/files/1/0300/9124/7748/products/mockup-6161d4a6_1000x.jpg?v=1581906455"
-                    }
+                    src={d.image || image}
                     alt={`img of ${d.name}`}
                     width="400px"
                     height="250px"
