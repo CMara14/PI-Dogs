@@ -8,7 +8,9 @@
 .navbar{
 /* background-color: #e26d5c; */
 /* background-color: #ddbea9; */
-background-color: #fae1dd;
+/* background-color: #fae1dd; */
+ background-color: #ffb5a7;
+ 
 display: flex;
 align-items: center;
 flex-wrap: wrap;
@@ -19,13 +21,16 @@ padding: 0;
 overflow: hidden;
 height: 105px;
 }
+.containerApp{
+    margin-left: 14px;
+}
 
 .dogsApp {
     margin: 0;
     /* margin-top: 9%;    */
    position: relative;
    display: inline-block;   
-   padding: 15px 20px;
+   padding: 4px 10px;
    background: #f5f2f2;   
    color: rgb(59, 20, 20);
    width: auto;
@@ -83,6 +88,7 @@ height: 105px;
     display: flex;
 flex-wrap: wrap;
 justify-content: center;
+margin-left: 14px;
 /* margin-left: 30%; */
 }
 

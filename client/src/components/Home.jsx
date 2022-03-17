@@ -33,7 +33,7 @@ export default function Home() {
 
   //PARA EL PAGINADO DEFINO ESTADOS LOCALES PORQUE ES ALGO QUE VA A IR CAMBIANDO:
   const [currentPage, setCurrentPage] = useState(1);
-  const [dogPerPage,] = useState(8);
+  const [dogPerPage, setdogPerPage] = useState(8);
   const lastDog = currentPage * dogPerPage;
   const firstDog = lastDog - dogPerPage;
 
@@ -48,6 +48,8 @@ export default function Home() {
   const [load, setLoad] = useState(true)
 
   const [, setOrderDog] = useState("");
+
+
   useEffect(() => {
         dispatch(getTemperaments());
     dispatch(getAllDogs()).then(()=>setLoad(false));
@@ -86,12 +88,21 @@ export default function Home() {
     // }
   }
 
-
-
-// function handleFoward () {
-
-// }
-
+  
+  
+  // function handleForwad() {
+  //   const totalDogs = allDogs.length;
+  //   const nextPage = currentPage + 1;
+  //   const complete = currentPage * 8;
+  //   if (complete  >  totalDogs ) return;    
+  //   else setCurrentPage(nextPage);
+  // }
+  
+  // function handleBack() {
+  //   const prevPage = currentPage - 1;    
+  //   if (prevPage <= 0) return;
+  //   else setCurrentPage(prevPage);
+  // }
 
 
   if(load) {
@@ -116,11 +127,17 @@ export default function Home() {
           </div>
 
           <div>
+            {/* <button className="" onClick={(e) => handleBack(e) }>
+              Antes
+            </button> */}
             <Paginado
               dogsPerPage={dogPerPage}
               allDogs={allDogs.length}
               paginate={paginate}
             />
+            {/* <button className="" onClick={(e) => handleForwad(e) }>
+              Despues
+            </button> */}
           </div>
         </div>
       ) : (

@@ -5,7 +5,7 @@
     }
 
 .container{
-    display: flex;
+    /* display: flex;
     width: 0%;
     justify-content: space-around;
     grid-column-gap: 7rem;
@@ -13,58 +13,36 @@
     display: grid;
     grid-template-columns: 200px 200px 200px 200px;
     margin-left: 1.5rem;
-    padding-bottom: 40px;
+    padding-bottom: 40px; */
 }
 
 .dogcard{
-    display: flex;
-    padding: 2rem 2rem;
-    position: relative;
-    align-items: flex-end;
-    border-color: transparent;
-    
-    width: 280px;
-    height: 320px;
-    
-    box-shadow: 5px 5px 30px 7px rgba(189, 47, 182, 0.25),
-    -5px -5px 30px 7px rgba(131, 74, 121, 0.22);
-    transition: 0.5s ease-in-out;
-
-
-
-
-
-
-    /* width: 300px;
+    width: 300px;
     border-radius: 2%;
     margin: 20px;
     background-color: #ffb5a7;
-    box-shadow: 0 1rem 1rem rgba(0, 0, 0, 0.3);
+    /* box-shadow: 0 1rem 1rem rgba(0, 0, 0, 0.3); */
     backdrop-filter: blur(1rem);
-    text-align: center; */
-
-
-    /*height: 400px; */
+    text-align: center;
+    box-shadow: 0px 0px 5px 5px rgba(0, 0, 0, 0.3);  
+    height: 400px;
+    text-decoration: none;
    /* border: 1px solid #e1ecf7; */
    /* background-color: #d5bdaf; */
    /* background-color: #ffdab9; */
     /* background-color: #8a817c; */
    /*     background-color: #E1DAD2; */
-   /* box-shadow: 0px 0px 5px 5px #e1ecf7;  */
-
-
-
-
-
-
 }
 
 .dogcard:hover {
-
-    box-shadow: 5px 5px 30px 7px rgba(220, 85, 247, 0.25),
+    background-color: #e26d5c;
+    /* height: 450px;
+    width: 310px; */
+    /* text-transform: capitalize; */
+    /* box-shadow: 5px 5px 30px 7px rgba(220, 85, 247, 0.25),
     -5px -5px 30px 7px rgba(231, 70, 196, 0.22);
     cursor: pointer;
-    transform: translateY(15px)
+    transform: translateY(15px) */
 
 
   
@@ -83,7 +61,7 @@
 
 
 .dogcard::before{
-    content:"";
+    /* content:"";
     position: absolute;
     top: 0;
     left: 0;
@@ -93,13 +71,13 @@
     background: linear-gradient(to bottom,rgba(212, 49, 177, 0.5),rgb(241, 68, 232));
     z-index: 2;
     transition: 0.5s all;
-    opacity:0;
+    opacity:0; */
 }
 
-.dogcard:hover:before{
+/* .dogcard:hover:before{
     opacity: 1;
 }
-
+ */
 
 
 
@@ -110,7 +88,8 @@
 
 .titleName{
     color: #070707;
-    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    /* font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; */
+font-family: "carlito";
     font-size: 24px;
     bottom: 10%;
     top: 20%; 
@@ -120,34 +99,46 @@
     white-space: nowrap; 
     text-overflow: ellipsis; 
    overflow: hidden;
+   font-family: "carlito";
+
 
 }
 
 .cardImage{
+    /* width:200px; 
+    height:200px;
+    border-radius: 10%;
+    justify-content: center;
+    border-style:outset;
+    border-color: rgba(99, 135, 182, 0.781);
+    border-width: 7px;
 
+    object-fit: cover */
+    
+/* margin: auto;
+    object-fit: cover;
+    height: 100%;
+    width: 100%; */
+/* 
     width: 100%;
     height: 100%;
     object-fit: cover;
     position: absolute;
     top: 0;
     left: 0;
-
-
-
-
-    /* max-width: 250px;    
+ */
+    width: 250px;    
     height:200px;
     border-radius: 5%;
     justify-content: center;
     border-style: double;
-    border-color: rgba(8, 8, 8, 0.781); */
-
-
-
+    border-color: rgba(8, 8, 8, 0.781);
 
     /* border-width: 5px; */
 }
-
+.subtitle{
+    font-family: "carlito";
+}
 .tempCard{
     color: #0c0c0c;
     justify-content: center;
@@ -156,6 +147,11 @@
     text-decoration: inherit;
     /* height: 80px; */
 font-size: 15px;
+font-family: "carlito";
+
+
+
+
      text-align: center;
   /* white-space: nowrap; 
    text-overflow: ellipsis;  */
@@ -163,6 +159,8 @@ font-size: 15px;
 }
 
 .weightCard {
+    align-items: flex-end;
+    font-family: "carlito";
     font-size: 15px;
     color: #0c0c0c;
     justify-content: center;

@@ -7,6 +7,7 @@ import "../styles/Cards.css"
 
 import Card from './Card';
 import Loading from "./Loading";
+import image from "../assets/perroCreate.jpg"
 
 
 import { getAllDogs } from "../redux/actions";
@@ -50,7 +51,7 @@ export default function Cards({currentDog}) {
           key={d.id}
           id={d.id}
           name={d.name}
-          image={d.image || "https://cdn.shopify.com/s/files/1/0300/9124/7748/products/mockup-6161d4a6_1000x.jpg?v=1581906455"}
+          image={d.image || image}
           temperament={d.temperament}
           weight_min= {d.weight_min} 
           weight_max= {d.weight_max}           

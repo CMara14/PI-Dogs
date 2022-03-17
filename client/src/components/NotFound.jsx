@@ -2,7 +2,9 @@ import React from 'react'
 // import { useDispatch } from 'react-redux'
 import icon from "../assets/kiss.png"
 
-export default function NotCreated() {
+import "../styles/NotFound.css"
+
+export default function NotFound() {
     // const dispatch = useDispatch()
 
 // function handleRefresh (e) {
@@ -13,7 +15,7 @@ export default function NotCreated() {
     <div className='notFound'>
       {/* <button className='buttonRefresh' onClick={e => handleRefresh(e)}>Refresh</button> */}
     <img src={icon} alt="Dogs not found" />
-      <h1>Dogs not found</h1>
+      <h1 className='titleNotfound'>Dogs not found</h1>
     </div>
   )
 }

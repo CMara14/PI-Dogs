@@ -8,12 +8,37 @@
  
  
  .dogsCards {
-   
+
+
+  /* width: 100%;
+  display: flex;
+  flex-grow: 1;
+  justify-content: center;
+  height: 85vh;
+  flex-direction: row;
+  flex-wrap: wrap; */
+
+
+
+/* 
+  height: 85vh;
+  flex-direction: row;
+  flex-wrap: wrap; */
+
+
+   /* MIO */
 margin: 2%;
 display: flex;
 flex-wrap: wrap;
 justify-content: space-evenly;
    
+
+
+
+
+
+
+
    /* display: flex;
    flex-wrap: wrap;
    justify-content: space-evenly;

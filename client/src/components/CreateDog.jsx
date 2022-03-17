@@ -6,6 +6,7 @@ import { NavLink, useNavigate } from "react-router-dom";
 import { postDog, getTemperaments } from "../redux/actions";
 
 import "../styles/CreateDog.css";
+import icon from "../assets/perroCreate.jpg";
 
 // import validate from "./Validate";
 
@@ -54,9 +55,9 @@ function validate(input) {
     errors.weight_max = "Max weight should be greater than Min weight";
   }
   //life_span
-   if (!input.minlife_span) {
+  if (!input.minlife_span) {
     errors.minlife_span = "Min Life Span required";
-  } else if (input.minlife_span<= 0) {
+  } else if (input.minlife_span <= 0) {
     errors.minlife_span = "Min Life Span should be greater than 0";
   } else if (!input.maxlife_span) {
     errors.maxlife_span = "Max Life Span required";
@@ -66,29 +67,37 @@ function validate(input) {
     errors.maxlife_span = "Max Life Span should be greater than Min Life Span";
   }
 
-//solo sean numeros y guiones
+  //solo sean numeros y guiones
 
   // if (!input.life_span) {
   // }
-  // else 
-  
+  // else
+
   // if (input.life_span <= 0) {
   //   errors.life_span = "Life span should be greater than 0";
   // } else if (input.life_span > 20) {
   //   errors.life_span = "Life span should be smaller than 20";
   // }
 
-  if (input.image.length &&  !/(http(s?):)([/|.|\w|\s|-])*\.(?:jpg|gif|png)/.test(input.image)
+  if (
+    input.image.length &&
+    !/(http(s?):)([/|.|\w|\s|-])*\.(?:jpg|gif|png)/.test(input.image)
   ) {
     errors.image = "Image is invalid, it must be an URL";
     // } else if (input.image.length > 255) {
     //   errors.image = "Please insert a correct URL image";
   }
 
-  if (input.temperaments.length  < 1) {
-    errors.temperaments = "Select at least one temperament";
-  }
-  
+  // if (!input.temperaments.length) {
+  //   errors.temperaments = "Select at least one temperament";
+  // }
+
+  // if (input.temperaments.length  < 1) {
+  //   errors.temperaments = "Select at least one temperament";
+  // }
+  // else {
+  //   errors.temperaments =
+  // }
 
   return errors;
 }
@@ -113,7 +122,6 @@ export default function CreateDog() {
 
   const temps = useSelector((state) => state.temperaments);
   const allDogs = useSelector((state) => state.dogs);
-
 
   useEffect(() => {
     dispatch(getTemperaments());
@@ -156,22 +164,13 @@ export default function CreateDog() {
     // // )
     // // {
     //  else
-   // else
-    
-    if (error.length !== 0) {
+    // else
+
+    if (error.length !== 0 || !input.temperaments.length) {
       alert("Please complete all the fields");
     } else if (dogsFiltered.length >= 1) {
       alert("That dog name already exists");
     } else {
-      // else {
-      //   const newDoggie = {
-      //   name: input.name,
-      //   height: `${parseInt(input.height_min)} - ${parseInt(input.height_max)}`,
-      //   weight: `${parseInt(input.weight_min)} - ${parseInt(input.weight_max)}`,
-      //   life_span: `${parseInt(input.minlife_span)} - ${parseInt(input.maxlife_span)} years`,
-      //   image: input.image,
-      //   temperaments: input.temperaments.join(", ")
-
       dispatch(postDog(input));
       setInput({
         name: "",
@@ -181,7 +180,6 @@ export default function CreateDog() {
         weight_max: "",
         minlife_span: "",
         maxlife_span: "",
-        // life_span: "",
         image: "",
         temperaments: [],
       });
@@ -207,18 +205,6 @@ export default function CreateDog() {
     console.log(input);
   }
 
-  /* function handleChange(e) {
-    e.preventDefault();
-    setInput((prev) => ({ ...prev, [e.target.name]: e.target.value }));
-    setErrors(validate({
-      ...input,
-      [e.target.name]: e.target.value
-    }))
-  } */
-
-  // errors,
-  // e.target.name
-
   function handleSelect(e) {
     if (!input.temperaments.includes(e.target.value)) {
       console.log(e.target.value);
@@ -237,39 +223,97 @@ export default function CreateDog() {
   }
 
   return (
-    <div className="containerCreate">
-      <div>
-        <form className="formDog" onSubmit={(e) => handleSubmit(e)}>
-          <h1>¡Create your dog! </h1>
-          {/* <img
-            src={
-              input.image ||
-              "https://i2.wp.com/codigoespagueti.com/wp-content/uploads/2019/11/coraje-el-perro-cobarde.jpg?fit=1080%2C608&quality=80&ssl=1"
-            }
-            width="100px"
-            height="100px"
+    <div className="containerInfoCreate">
+
+      <div className="containertitleCreate">
+        <h1 className="titleCreate">¡Create your dog! </h1>
+      </div>
+
+      {/* className="formDog" */}
+      <form className="formCreate" onSubmit={(e) => handleSubmit(e)}>
+        
+        
+        {/* <div className="containerLeftcreate"> */}
+         
+         
+         
+          <label className="inputLabel">Name: </label>
+          <input
+            // key={input.name}
+            key="name"
+            type="text"
+            value={input.name}
+            name="name"
+            onChange={(e) => handleChange(e)}
+            required
+            className="inputBox"
+          />
+          <strong className="errors">{errors.name}</strong>
+          <label className="inputLabel">Image URL: </label>
+          <input
+            // key="image"
+            type="url"
+            value={input.image}
+            name="image"
+            onChange={(e) => handleChange(e)}
+            autoComplete="off"
+            className="inputBox"
+            placeholder="URL"
+            maxLength="255"
+          />{" "}
+          <strong className="errors"> {errors.image}</strong>
+          <div className="contenedorImage">
+          <img
+            className="imageCreate"
+            src={input.image || icon}
+            // width="100px"
+            // height="100px"
             alt="Dog_image"
-          /> */}
+          />
+          {/* </div> */}
 
-          <div>
-            <div>
-              <label className="inputLabel">Name: </label>
-              <input
-                // key={input.name}
-                key="name"
-                type="text"
-                value={input.name}
-                name="name"
-                onChange={(e) => handleChange(e)}
-                required
-                className="inputBox"
-              />
-              <strong className="errors">{errors.name}</strong>
+          <div className="tempsdiv">
+
+          <label className="inputLabel">Temperaments: </label>
+
+          <select
+            defaultValue=""
+            className="selectCreate"
+            onChange={(e) => handleSelect(e)}
+          >
+            <option value="" disabled hidden>
+              Select Temperaments...
+            </option>
+            {temps?.map((temp) => (
+              <option value={temp.name} key={temp.id} name="temperaments">
+                {temp}
+              </option>
+            ))}
+          </select>
+       
+          {input.temperaments.map((t) => (
+            <div className="box_opcion" key={t}>
+              <div className="opcion_title">
+                <p>{t}</p>
+              </div>
+              <button
+                className="btn_remove"
+                onClick={() => handleDelete(t)}
+                key={t}
+                value={t}
+              >
+                x
+              </button>
+            </div>
+          ))}
+          <strong className="errors">{errors.temperaments}</strong>
+          </div>
+
             
-            <div >
-
-            <label className="inputLabel">Height: </label>
-                             <input
+            
+            {/* <div className="containerRightcreate"> */}
+              <label className="inputLabel">Height: </label>
+              <input
                 // key="height_min"
                 type="number"
                 placeholder="Min.."
@@ -293,21 +337,7 @@ export default function CreateDog() {
                 min="0"
               />
               <strong className="errors">{errors.height_max}</strong>
-              {/*             
-<div className="errors">
-
-            {errors.height_min && ( //pregunto si esta mi estado de errores
-           <p>{errors.height_min}</p>
-              //si llega a ser asi, renderizo un parrafo con el error
-            )}
-          {errors.height_max && ( //pregunto si esta mi estado de errores
-            <p>{errors.height_max}</p> //si llega a ser asi, renderizo un parrafo con el error
-            )}
-</div> */}
-            </div>  
-            <br />          
-            <div >
-            <label className="inputLabel">Weight: </label>
+              <label className="inputLabel">Weight: </label>
               <input
                 // key="weight_min"
                 placeholder="Min.."
@@ -332,11 +362,8 @@ export default function CreateDog() {
                 min="0"
               />{" "}
               <strong className="errors"> {errors.weight_max}</strong>
-            </div>
-            
-            <br /> 
-            <div  >
-            <label className="inputLabel"> Life Span: </label>
+              <br />
+              <label className="inputLabel"> Life Span: </label>
               <input
                 type="number"
                 placeholder="Min.."
@@ -360,88 +387,29 @@ export default function CreateDog() {
                 min="0"
               />
               <strong className="errors"> {errors.maxlife_span}</strong>
-            </div> 
-            </div>
-              
+     
+          {/* </div> */}
+      
+<div className="containerButtons">
+  <div className="containerButtonreturn">
+    <button
+      className="buttonCreate"
+      type="submit"
+      onSubmit={(e) => handleSubmit(e)}
+    >
+      Create
+    </button>
 
-            {/* <div>
-              <label className="inputLabel">Life Span: </label>
-              <input
-                // key="life_span"
-                type="text"
-                value={input.life_span}
-                name="life_span"
-                onChange={(e) => handleChange(e)}
-                className="inputBox"
-                placeholder="9 - 12"
-              />{" "}
-              <strong> {errors.life_span}</strong>
-            </div> */}
-  <br /> 
-              <div>
-              <label className="inputLabel">Image URL: </label>
-              <input
-                // key="image"
-                type="url"
-                value={input.image}
-                name="image"
-                onChange={(e) => handleChange(e)}
-                autoComplete="off"
-                className="inputBox"
-                placeholder="URL"
-              />{" "}
-              <strong className="errors"> {errors.image}</strong>
-            </div>
-
-            <div>
-            <label className="inputLabel">Temperaments: </label>
-            <select defaultValue="" className="selectCreate" onChange={(e) => handleSelect(e)}>
-              <option value="" disabled hidden> 
-              Select Temperaments...
-             </option>
-              {temps?.map((temp) => (
-                <option value={temp} key={temp} name="temperaments">
-                  {temp}
-                </option>
-              ))}
-            </select>
-            <div>
-              {input.temperaments.map((t) => (
-                <div className="box_opcion" key={t}>
-                  <div className="opcion_title">
-                    <p>{t}</p>
-                  </div>
-                  <button
-                    className="btn_remove"
-                    onClick={() => handleDelete(t)}
-                  >
-                   x
-                  </button>
-                </div>
-              ))}
-            </div>
-              <strong className="errors">{errors.temperaments}</strong>
-            </div>
-          </div>
-          <br />
-          <div className="containerButtons">
-            <button
-              className="buttonCreate"
-              type="submit"
-              onSubmit={(e) => handleSubmit(e)}
-            >
-              Create
-            </button>
-            <div className="containerButtonreturn">
-              <button className="buttonReturn">
-                <NavLink className="navLink" to="/home">
-                  Cancel
-                </NavLink>
-              </button>
-            </div>
-          </div>
-        </form>
-      </div>
+    <button className="buttonReturn">
+      <NavLink className="navLink" to="/home">
+        Cancel
+      </NavLink>
+    </button>
+  </div>
+  </div>
+  </div>
+      </form>
+      
     </div>
   );
 }

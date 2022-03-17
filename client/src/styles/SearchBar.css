@@ -9,21 +9,24 @@
     --input-border: #CDD9ED;
     --input-background: #fff;
     --input-placeholder: #CBD1DC;
-    --input-border-focus: #275EFE;
+    --input-border-focus: #362D25;;
 }
 
 .inputSearch {
+    
     display: block;
     width: 350px;
     padding: 8px 16px;
     line-height: 25px;
     font-size: 14px;
     font-weight: 500;
+    /* font-family: "carlito"; */
     font-family: inherit;
     border-radius: 6px;
     -webkit-appearance: none;
+    
     color: var(--input-color);
-    border: 1px solid var(--input-border);
+    border: 3px solid var(--input-border);
     background: var(--input-background);
     transition: border .3s ease;
 }

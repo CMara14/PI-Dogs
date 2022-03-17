@@ -16,9 +16,9 @@ export default function NavBar() {
 
   return (
     <div className="navbar">
-        <div>
+        <div className="containerApp">
           <NavLink  className="dogsApp" to="/">
-                          <h1>Dogs <br /> App</h1>
+                          <h1>Dogs <br /> App 🐶</h1>
                        </NavLink>
         </div>
       <div className="search">

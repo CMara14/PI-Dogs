@@ -1,18 +1,45 @@
-.paginado{
-/* border: none;
-  text-align: center ;
-  display: inline-flex;  */
+.containerpaginado{
+  /* border: none;
+    text-align: center ;
+    display: inline-flex;  */
+  
+    display: flex;
+    direction: row;
+    flex-wrap: wrap;
+    justify-content: center; 
+    align-items: stretch;
+  
+    /* space-evenly; */
 
-  display: flex;
-  direction: row;
-  flex-wrap: wrap;
-  justify-content: center; 
-  /* space-evenly; */
-  align-items: stretch;
+}
+
+.paginado{
+margin-bottom: 20px;
+display: flex;
+    flex-direction: row; 
+    justify-content: center;
+/* 
+  position: absolute;
+  width: 95%;
+  top: 3vh;
+  */
 }
 
 .number{
-  width: 3em;
+  width: 35px;
+  height: 35px;
+  margin-left: 7px;
+  margin-right: 1px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+
+
+
+
+
+  /* width: 3em;
   margin: 4px;
   border: none;
   background-color:#FFCDB2;
@@ -20,7 +47,10 @@
   border-radius: 10%;
   flex-direction: row;
   font-weight: bold;
-  border: medium;
+  border: medium; */
+
+
+
   /* color: midnightblue;
   float: left;
   text-align: center;
@@ -29,30 +59,43 @@
   outline:none; */
 }
 .numberButton{
+  border-radius: 4px;
+  width: 100%;
+  height: 100%;
+  background-color:  #362D25;
+color: antiquewhite;
+font-size: 18px;
+
+
+
+
+/* 
+
   border: medium;
   border-color: black;
   color: #fff1e6;
   background-color:  #362D25;
-  /* background-color:#FFCDB2; */
   width: 36px;
-  /* padding: 16px 20px; */
   font-size: 25px;
   padding: -3px;
   padding-left: 10px;
   padding-right: 10px;
+  cursor: pointer; */
+
+  /* padding: 16px 20px; */
+  /* background-color:#FFCDB2; */
   /* margin: 10px; */
-  cursor: pointer;
   
 }
 
 .numberButton:hover{
-background-color: red;
+background-color: rgb(230, 159, 159);
 color: black; 
 }
 
 
 .numberButton:focus{
-  background-color: black;
+  background-color: #a08369;
   color: white;
 }
 /* 

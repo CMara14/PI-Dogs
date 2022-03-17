@@ -38,15 +38,18 @@ Luego solo renderizo ese numero es decir por separado.
 
 return (
    
-        <div className="paginado"  >                              
+        <div  className="container paginado">
+          <div className="paginado">
+   
             { pageNumbers && pageNumbers
             .map((number) => (
                 
-            //  <div className="number" key={number} > 
+             <div className="number" key={number} > 
             <button className="numberButton" onClick={() => paginate(number)} >  {number}  </button>
-             // </div> 
+              </div> 
              ))}                   
         </div>
+            </div>                              
     
     );
 };
