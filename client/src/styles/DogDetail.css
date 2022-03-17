@@ -39,7 +39,7 @@ margin: 20px;
 margin-left: auto;
 margin-right: auto;
 overflow: hidden;
-
+font-family: "carlito";
 padding: 40px 0; 
 box-shadow: 0 1rem 1rem rgba(0, 0, 0, 0.3);
 background-color: #ffb5a7;
@@ -110,7 +110,7 @@ background-position: center center; */
     flex-direction: column;
     justify-content: space-evenly;
     
-  
+    font-family: "carlito";
     /* padding-top: 10px;
     padding-left: 10px;
     margin-left: 10px;

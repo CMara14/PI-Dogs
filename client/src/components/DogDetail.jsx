@@ -72,12 +72,13 @@ const [load, setLoad] = useState(true)
                                   </div>
 
                 <div className="containerRight">
-                  <p className="description">Height: <br /> Min. {d.height_min} cm - Max. {d.height_max} cm   </p>
+                  <p className="description"><strong>Height</strong> <br /> Min. {d.height_min} cm - Max. {d.height_max} cm   </p>
                   {/* <p className="description">Height Max:{" "}{" "}  {d.height_max} cm </p> */}
-                  <p className="description">Weight: <br /> Min.{d.weight_min} kg - Max. {d.weight_max} kg</p>
+                  <p className="description"><strong>Weight</strong> <br /> Min. {d.weight_min} kg - Max. {d.weight_max} kg</p>
                   {/* <p className="description">Weight Max: {" "}{" "} {d.weight_max} kg</p> */}
-                  <p className="description">Life Span: <br /> {d.life_span}</p>
-                  <p className="description">Temperament:{" "} <br />                    
+                  <p className="description"> <strong>Life Span</strong> <br /> {d.life_span}</p>
+                  <p className="description"> 
+                  <strong>Temperament</strong>{" "} <br />                    
                     {d.temperament 
                       ? d.temperament.join(", ")
                       // : d.temperaments.join(" - ")

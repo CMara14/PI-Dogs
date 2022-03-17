@@ -21,18 +21,22 @@ export default function Card ({image, name, temperament, weight_max, weight_min,
             </Link>
             
 
-         
-              <p className='tempCard'>
-                <h5 className='subtitle'>Temperament</h5>
-                {/* <strong>:</strong> */}            
+         <div className='tempCard'>
+              <p >
+              <strong>Temperament</strong>                         
             <br />
               {temperament
               ? temperament.join(' - ')
-              : "No temperaments" }</p>          
-            <p className='weightCard'> 
-            <h5 className='subtitle'>Weight</h5>                  
+              : "No temperaments" }</p>  
+         </div>
+         <div className='weightCard'>
+            <p > 
+            <strong>Weight</strong>                            
               <br />
               {weight_min} Kg - {weight_max} Kg</p>
+
+         </div>
+                  
               </div>
           </div>  
       </div>

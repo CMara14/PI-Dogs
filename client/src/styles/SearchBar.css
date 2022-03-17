@@ -47,7 +47,7 @@
 
 .searchBox {
      overflow: hidden;
-     display:flex;
+     display: flex;
      justify-content: center;
      flex-wrap: wrap;
      align-items: center;

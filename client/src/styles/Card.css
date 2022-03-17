@@ -148,19 +148,16 @@ font-family: "carlito";
     /* height: 80px; */
 font-size: 15px;
 font-family: "carlito";
-
-
-
-
      text-align: center;
   /* white-space: nowrap; 
    text-overflow: ellipsis;  */
   overflow: hidden;
+  padding: 15px;
 }
 
 .weightCard {
     align-items: flex-end;
-    font-family: "carlito";
+    
     font-size: 15px;
     color: #0c0c0c;
     justify-content: center;
@@ -168,4 +165,8 @@ font-family: "carlito";
     padding: 5px;
     text-decoration: inherit;
     margin-top: 7px;
+}
+ 
+p{
+    font-family: "carlito";
 }

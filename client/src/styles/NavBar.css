@@ -71,7 +71,7 @@ height: 105px;
    overflow: hidden;
    transition: 0.2s;
    border-radius:7px;
-   font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+   font-family: "carlito";
    cursor: pointer;
    border: solid 3px;
    transition: .5;    
@@ -89,6 +89,7 @@ height: 105px;
 flex-wrap: wrap;
 justify-content: center;
 margin-left: 14px;
+margin-right: 14px;
 /* margin-left: 30%; */
 }
 
