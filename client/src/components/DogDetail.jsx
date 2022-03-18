@@ -78,8 +78,7 @@ const [load, setLoad] = useState(true)
                   <p className="description"> 
                   <strong>Temperament</strong>{" "} <br />                    
                     {d.temperament 
-                      ? d.temperament.join(", ")
-                      // : d.temperaments.join(" - ")
+                      ? d.temperament.join(", ")                   
                       : d.temperaments? d.temperaments.join(", ")
                       : "No temperaments"
                       }
