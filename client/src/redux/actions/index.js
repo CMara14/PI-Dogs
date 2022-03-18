@@ -10,7 +10,6 @@ export const GET_DOG_DETAIL = "GET_DOG_DETAIL";
 
 //Constantes de ordenamiento:
 export const SORT_BY = "SORT_BY";
-// export const SORT_BY_WEIGHT = "SORT_BY_WEIGHT";
 
 //Constantes de filtrado:
 export const FILTER_BY_SOURCE = "FILTER_BY_SOURCE";
@@ -19,13 +18,13 @@ export const FILTER_BY_TEMPS = "FILTER_BY_TEMPS";
 
 
 //---------------------RUTA GENERAL-----------------
-export const getAllDogs = () => {//defino mi action
-    return async (dispatch) => {//despacho mi accion
+export const getAllDogs = () => {
+    return async (dispatch) => {
         try {
-            const { data } = await axios.get(`http://localhost:3001/dogs`)//hago el pedido al back
+            const { data } = await axios.get(`http://localhost:3001/dogs`)
             return dispatch({
-                type: "GET_ALL_DOGS",//defino el tipo para que lo lea el reducer
-                payload: data//le paso la data que me llega del back
+                type: "GET_ALL_DOGS",
+                payload: data
             })
         } catch(err) {
             console.log(err)
@@ -34,8 +33,7 @@ export const getAllDogs = () => {//defino mi action
 }
 
 //------------------RUTA DE BUSQUEDA query------------------
-/* Le indico la ruta que cree para el query en mi back y despues del = tome el valor que me llega por payload. 
-El payload me lo da la ruta, (data) ya que una vez que asigno un valor por name */
+
 export const getDogName = (name) => {
     return async (dispatch) => {
         try {
@@ -49,7 +47,6 @@ export const getDogName = (name) => {
                 type: "GET_DOG_NAME",
                 payload: []
             })
-            /* le digo que me traiga un arreglo vacio  */
             console.log(err)
         }
     }
@@ -94,7 +91,7 @@ export const postDog = (newDog) => {
     return async (dispatch) => {
         try {
             const { data } = await axios.post(`http://localhost:3001/dog`, newDog)
-            console.log(data)
+            // console.log(data)
             return dispatch({
                 type: "POST_DOG",
                 payload: data
@@ -117,17 +114,6 @@ export function sortBy(payload) {
         }
  }
 
-//___________________POR PESO
-//  export function sortByweight(payload) {
-//     console.log(payload)
-//           return {
-//             type: "SORT_BY_WEIGHT",
-//             payload
-//         }
-//      }
-
-
-
 
  //------------------FILTRADOS-----------------
 //POR TEMPERAMENTOS
@@ -142,7 +128,7 @@ export const filterByTemps = (payload) => {
 
 
 //POR ORIGEN
-//lo que le llega como payload es lo que le mando del componente
+
     export const filterBySource = (payload) => {
         console.log(payload)
           return ({
@@ -151,19 +137,6 @@ export const filterByTemps = (payload) => {
             })
      }
 
-//ORDENAMIENTO:
-//ALFABETICAMENTE
-
-//POR PESO
-
-
-//FILTRADO:
-//BASE DE DATOS
-
-//TEMPERAMENTOS
-
-
-     //PUT
 
      //DELETE
 // export const deleteDog = (id) => {
@@ -179,6 +152,3 @@ export const filterByTemps = (payload) => {
 //     }
 // }
 
-
-
-     //BUSCAR ALGO QUE NO ES EN LA RUTA

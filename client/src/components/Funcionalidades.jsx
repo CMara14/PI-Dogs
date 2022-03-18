@@ -27,6 +27,10 @@ export default function Funcionalidades({handleSort, handleSource, handleTemp}) 
                 <option value="max">Big</option>
                 <option value="min">Small</option>
               </optgroup>
+              <optgroup label="Height">
+                <option value="alturamin">Min</option>
+                <option value="alturamax">Max</option>
+              </optgroup>
             </select>
 
 
@@ -57,6 +61,8 @@ export default function Funcionalidades({handleSort, handleSource, handleTemp}) 
                 <option value="ALL">API Dogs</option>
                 <option value="DB">Your Dogs</option>
               </select>
+
+
   
          </div>
     </div>
