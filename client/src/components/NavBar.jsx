@@ -28,7 +28,7 @@ export default function NavBar() {
      
         <div className="divrefresh">
           <button className="refreshNavBar" onClick={(e) => handleRefresh(e)}>
-                       Refresh {""}{""}{""} <img className="refresh" src={icon} alt="" />
+            <img className="refresh" src={icon} alt="" />
           </button>
         </div>
             <div className="contenedorCreate">

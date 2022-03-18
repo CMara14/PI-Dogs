@@ -79,17 +79,17 @@ function validate(input) {
   //   errors.life_span = "Life span should be smaller than 20";
   // }
 
-
+const regex = /(https?:\/\/(?:www\.|(?!www))[a-zA-Z0-9][a-zA-Z0-9-]+[a-zA-Z0-9]\.[^\s]{2,}|www\.[a-zA-Z0-9][a-zA-Z0-9-]+[a-zA-Z0-9]\.[^\s]{2,}|https?:\/\/(?:www\.|(?!www))[a-zA-Z0-9]+\.[^\s]{2,}|www\.[a-zA-Z0-9]+\.[^\s]{2,})/gi;
 
 
   
 
-  // if (
-  //   input.image.length &&
-  //   !/(http(s?):)([/|.|\w|\s|-])*\.(?:jpg|gif|png)/.test(input.image)
-  // ) {
-  //   errors.image = "Image is invalid, it must be an URL";
-  // }
+  if (
+    input.image.length &&
+    !regex.test(input.image)
+  ) {
+    errors.image = "Image is invalid, it must be an URL";
+  }
 
 
 
@@ -138,17 +138,7 @@ export default function CreateDog() {
     dispatch(getTemperaments());
   }, [dispatch]);
 
-  // //me defino un estado local como objeto vacio para poder setear los errores, modificando las props
-  // name: "",
-  // height_min: "",
-  // height_max: "",
-  // weight_min: "",
-  // weight_max: "",
-  // life_span: "",
-  // image: "",
-  // temperaments: [],
-
-  function handleSubmit(e) {
+   function handleSubmit(e) {
     const dogsFiltered = allDogs.filter((d) => d.name === input.name);
     e.preventDefault();
     console.log(input);
@@ -254,7 +244,7 @@ export default function CreateDog() {
                   value={input.name}
                   name="name"
                   onChange={(e) => handleChange(e)}
-                  required
+                  // required
                   className="inputBox"
                 />
                 <strong className="errors">{errors.name}</strong>
@@ -301,7 +291,7 @@ export default function CreateDog() {
                 value={input.height_min}
                 name="height_min"
                 onChange={(e) => handleChange(e)}
-                required
+                // required
                 className="inputBox"
                 min="0"
               />
@@ -314,7 +304,7 @@ export default function CreateDog() {
                 value={input.height_max}
                 name="height_max"
                 onChange={(e) => handleChange(e)}
-                required
+                // required
                 className="inputBox"
                 min="0"
               />
@@ -330,7 +320,7 @@ export default function CreateDog() {
                 value={input.weight_min}
                 name="weight_min"
                 onChange={(e) => handleChange(e)}
-                required
+                // required
                 className="inputBox"
                 min="0"
               />
@@ -343,7 +333,7 @@ export default function CreateDog() {
                 value={input.weight_max}
                 name="weight_max"
                 onChange={(e) => handleChange(e)}
-                required
+                // required
                 className="inputBox"
                 min="0"
               />{" "}
@@ -360,7 +350,7 @@ export default function CreateDog() {
                 value={input.minlife_span}
                 name="minlife_span"
                 onChange={(e) => handleChange(e)}
-                required
+                // required
                 className="inputBox"
                 min="0"
               />
@@ -373,7 +363,7 @@ export default function CreateDog() {
                 value={input.maxlife_span}
                 name="maxlife_span"
                 onChange={(e) => handleChange(e)}
-                required
+                // required
                 className="inputBox"
                 min="0"
               />
@@ -434,11 +424,11 @@ export default function CreateDog() {
                     Create
                   </button>
 
-                  <button className="buttonReturn">
                     <NavLink className="navLink" to="/home">
+                  <button className="buttonReturn">
                       Cancel
-                    </NavLink>
                   </button>
+                    </NavLink>
                 </div>
                 </div>
           </div>

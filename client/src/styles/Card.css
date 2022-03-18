@@ -102,8 +102,7 @@
     white-space: nowrap; 
     text-overflow: ellipsis; 
    overflow: hidden;
-   font-family: "carlito";
-
+   font-family:"Helvetica";
 
 }
 
@@ -140,7 +139,7 @@
     /* border-width: 5px; */
 }
 .subtitle{
-    font-family: "carlito";
+    font-family:"Helvetica";
 }
 .tempCard{
     color: #0c0c0c;
@@ -150,8 +149,7 @@
     text-decoration: inherit;
     height: 80px;
 font-size: 15px;
-font-family: "carlito";
-     text-align: center;
+font-family:"Helvetica";     text-align: center;
   /* white-space: nowrap; 
    text-overflow: ellipsis;  */
   overflow: hidden;
@@ -171,5 +169,5 @@ font-family: "carlito";
 }
  
 p{
-    font-family: "carlito";
+    font-family:"Helvetica";
 }
