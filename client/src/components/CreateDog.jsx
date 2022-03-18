@@ -79,14 +79,25 @@ function validate(input) {
   //   errors.life_span = "Life span should be smaller than 20";
   // }
 
-  if (
-    input.image.length &&
-    !/(http(s?):)([/|.|\w|\s|-])*\.(?:jpg|gif|png)/.test(input.image)
-  ) {
-    errors.image = "Image is invalid, it must be an URL";
-    // } else if (input.image.length > 255) {
-    //   errors.image = "Please insert a correct URL image";
-  }
+
+
+
+  
+
+  // if (
+  //   input.image.length &&
+  //   !/(http(s?):)([/|.|\w|\s|-])*\.(?:jpg|gif|png)/.test(input.image)
+  // ) {
+  //   errors.image = "Image is invalid, it must be an URL";
+  // }
+
+
+
+
+
+
+  // } else if (input.image.length > 255) {
+  //   errors.image = "Please insert a correct URL image";
 
   // if (!input.temperaments.length) {
   //   errors.temperaments = "Select at least one temperament";
