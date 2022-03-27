@@ -1,16 +1,9 @@
 .containerpaginado{
-  /* border: none;
-    text-align: center ;
-    display: inline-flex;  */
-  
     display: flex;
     direction: row;
     flex-wrap: wrap;
     justify-content: center; 
     align-items: stretch;
-  
-    /* space-evenly; */
-
 }
 
 .paginado{
@@ -18,11 +11,6 @@ margin-bottom: 20px;
 display: flex;
     flex-direction: row; 
     justify-content: center;
-/* 
-  position: absolute;
-  width: 95%;
-  top: 3vh;
-  */
 }
 
 .number{
@@ -33,30 +21,6 @@ display: flex;
   display: flex;
   align-items: center;
   justify-content: center;
-
-
-
-
-
-
-  /* width: 3em;
-  margin: 4px;
-  border: none;
-  background-color:#FFCDB2;
-  cursor: pointer;
-  border-radius: 10%;
-  flex-direction: row;
-  font-weight: bold;
-  border: medium; */
-
-
-
-  /* color: midnightblue;
-  float: left;
-  text-align: center;
-  text-decoration: none;
-  font-family:  inherit;
-  outline:none; */
 }
 .numberButton{
   border-radius: 4px;
@@ -65,27 +29,6 @@ display: flex;
   background-color:  #362D25;
 color: antiquewhite;
 font-size: 18px;
-
-
-
-
-/* 
-
-  border: medium;
-  border-color: black;
-  color: #fff1e6;
-  background-color:  #362D25;
-  width: 36px;
-  font-size: 25px;
-  padding: -3px;
-  padding-left: 10px;
-  padding-right: 10px;
-  cursor: pointer; */
-
-  /* padding: 16px 20px; */
-  /* background-color:#FFCDB2; */
-  /* margin: 10px; */
-  
 }
 
 .numberButton:hover{
@@ -98,7 +41,3 @@ color: black;
   background-color: #a08369;
   color: white;
 }
-/* 
-.number:hover{
-    background-color: orange;
-} */

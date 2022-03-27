@@ -31,10 +31,12 @@ export default function Home() {
   const temps = useSelector((state) => state.temperaments);
   const allDogs = useSelector((state) => state.dogs);
 
-   const [currentPage, setCurrentPage] = useState(1);
+  const [currentPage, setCurrentPage] = useState(1);
   const [dogPerPage, setdogPerPage] = useState(8);
   const lastDog = currentPage * dogPerPage;
   const firstDog = lastDog - dogPerPage;
+
+ 
 
   const paginate = (pgNumber) => {
     setCurrentPage(pgNumber);
@@ -71,7 +73,29 @@ export default function Home() {
     setCurrentPage(1);
   }
 
-  if (load) {
+
+  function handleNext() {
+    const totalDogs = allDogs.length;
+    const nextPage = currentPage + 1;
+    const complete = currentPage * 8;
+    if (complete > totalDogs) return;
+    else {
+      setCurrentPage(nextPage);
+      
+    }
+  }
+
+  function handlePrev() {
+    const prevPage = currentPage - 1;
+    if (prevPage <= 0) return;
+    else {
+      setCurrentPage(prevPage);
+    
+
+    }
+  }
+
+   if (load) {
     return <Loading />;
   }
 
@@ -94,12 +118,20 @@ export default function Home() {
               <Cards currentDog={currentDog} />
             </div>
 
-            <div>
-              <Paginado
+            <div className="containerPaginado">
+              <div className="paginado">
+                <button className="numberButton" onClick={handlePrev}>
+                  «
+                </button>
+                <Paginado
                 dogsPerPage={dogPerPage}
                 allDogs={allDogs.length}
                 paginate={paginate}
               />
+                <button className="numberButton" onClick={handleNext}>
+                  »
+                </button>             
+              </div>
             </div>
           </div>
         ) : (

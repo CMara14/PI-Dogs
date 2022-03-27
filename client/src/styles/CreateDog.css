@@ -7,18 +7,11 @@
 
     .bodyForm{
 
-        /* min-height: auto;
-        width: 100%;
-    */
          min-height: 135vh;
         width: 100%;
-    
-/* height: 650px; */
-        /*     height: calc(100vh - 5.25vw); calc(100vh - 5.25vw); */
+ 
         display: flex;
-        /* justify-content: center;
-        align-items: center;
-        padding-top: 40px; */
+        
         background-position: 0 0, 10px, 10px ;
 
     }
@@ -37,9 +30,7 @@
      width: 150%;
      max-width: 700px; 
      padding: 2.5em 3em;
-     /* 
-padding: 20px 0;
- width: 55%; */
+
 
  }
 
@@ -55,8 +46,7 @@ padding: 20px 0;
 
 .group {
     position: relative;
-/* position: relative; */
-/* margin: 45px; */
+
 }
 
 .inputLabel{
@@ -64,12 +54,9 @@ padding: 20px 0;
     position: absolute;
     top: -22px;
     left: 5px;
-    font-family:"Helvetica";
+    font-family:"Carlito";
         font-size: 135%; 
-/* transform: translateY(10px); */
 
-    /* font-family: "gabriola";
-    font-size: 150%; */
 }
 
 
@@ -82,15 +69,7 @@ padding: 20px 0;
     outline: none;
     border-bottom: 1px solid; ;
     background: none;
-    /* 
-    
-    font-size: 18px;
-    padding: 10px 10px 10px 5px; 
-    display: block;
-    width: 100%;
-    border: none;
-    
-     color: darkgray; */
+ 
 }
 
 .selectCreate{
@@ -108,7 +87,6 @@ padding: 20px 0;
 
 .optionsTemps{
     display: flex;
-    /* align-items: center;   */
     justify-content: center; 
     flex-wrap: wrap;
     font-size: 18px;
@@ -123,7 +101,7 @@ padding: 20px 0;
     margin-bottom: 15px;
     background-color: #e26d5c;
     padding: 14px;
-    /* padding-left: 10px; */
+   
     border-radius: 5px;
     width: 184px;
     border: solid 2px;
@@ -136,7 +114,7 @@ padding: 20px 0;
 
 .btn_remove{
     display: flex;
-    /* display: inline-block; */
+    
     justify-content: center;
     border-radius: 4px;
     width: 25px;
@@ -144,19 +122,16 @@ padding: 20px 0;
     text-align: center;
     font-size: 14px;
     padding: 0;
-    /* height: 20px; */
+   
     background: #a4133c;
 }
 
 .containerButtons{
     display: flex; 
-    /* align-items: flex-end;   */
+   
     justify-content: space-evenly; 
     align-items: center;
-    /* display: flex; 
-    align-items: flex-end;  
-    justify-content: space-evenly;  */
-    
+ 
 }
 .navLink{
     text-decoration: none; 
@@ -167,7 +142,7 @@ padding: 20px 0;
     margin: 0; 
     padding: 0;
     bottom: -20%;
-    font-family:"Helvetica";
+    font-family:"Carlito";
     position: relative;
     display: inline-block;
     overflow: hidden;
@@ -203,7 +178,7 @@ padding: 20px 0;
         text-decoration: none; 
     margin: 0; 
     padding: 0;
-    font-family:"Helvetica";
+    font-family:"Carlito";
     position: relative;
     display: inline-block;
     overflow: hidden;

@@ -27,10 +27,10 @@ export default function Funcionalidades({handleSort, handleSource, handleTemp}) 
                 <option value="max">Big</option>
                 <option value="min">Small</option>
               </optgroup>
-              <optgroup label="Height">
+              {/* <optgroup label="Height">
                 <option value="alturamin">Min</option>
                 <option value="alturamax">Max</option>
-              </optgroup>
+              </optgroup> */}
             </select>
 
 

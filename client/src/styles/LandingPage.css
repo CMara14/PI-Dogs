@@ -1,42 +1,22 @@
-/* IMAGEN DE FONDO
-BOTON
-LETRAS DE BIENVENIDA
-CONTENEDORES */
+
 * {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
 }
 
-/* body {  } */
-
-/* display: flex;
-    flex-wrap: wrap;
-    justify-content: space-evenly;
-    margin: 5%; */
-
-/* background-image: url("https://i.pinimg.com/564x/e5/d4/a6/e5d4a66213157d10a1ede22cfa22113b.jpg") */
 .landingPage {
-  /* fondo azul */
-  /* background-image: url("../assets/adorable-entero.jpg"); */
+
   display: flex;
   align-items: center;
-  /* justify-content: center; */
+
   flex-wrap: wrap;
   flex-direction: column;
   min-height: 100vh;
   background-size: cover;
-  /* background-position: 33% 35%;   */
-  /* fondo blanco */
+
   background-image: url("../assets/adorable-white-bulldog-puppy-portrait\ \(1\).jpg");
   background-position: 33% 100%;
-
-  /*     
-    width: 100%;
-    height: 100%; 
-     position: absolute;  */
-
-  /* Escala la imagen al mayor tamaño posible sin estirarla. Si las proporciones de la imagen difieren de las del elemento, es recortada vertical u horizontalmente para que no quede un espacio vacío. */
 }
 
 .containerbuttonlanding {
@@ -66,7 +46,7 @@ CONTENEDORES */
 }
 
 .button_landing:hover {
-  /*  */
+
   color: aliceblue;
 }
 
@@ -74,7 +54,7 @@ CONTENEDORES */
   height: 53%;
   margin-top: 4%;
   width: 100%;
-  /* margin-bottom: -31%; */
+
   font-size: 70px;
   font-family: "gabriola";
 }

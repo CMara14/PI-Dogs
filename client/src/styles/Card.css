@@ -25,11 +25,7 @@
     backdrop-filter: blur(1rem);
     text-align: center;
     box-shadow: 0px 0px 5px 5px rgba(0, 0, 0, 0.3);  
-    
-    
     height: 400px;
-    
-    
     text-decoration: none;
    /* border: 1px solid #e1ecf7; */
    /* background-color: #d5bdaf; */
@@ -40,55 +36,13 @@
 
 .dogcard:hover {
     background-color: #e26d5c;
-    /* height: 450px;
-    width: 310px; */
-    /* text-transform: capitalize; */
-    /* box-shadow: 5px 5px 30px 7px rgba(220, 85, 247, 0.25),
-    -5px -5px 30px 7px rgba(231, 70, 196, 0.22);
-    cursor: pointer;
-    transform: translateY(15px) */
-
-
-  
-
-    /* box-shadow: 5px 5px 30px 7px rgba(220, 85, 247, 0.25),
-    -5px -5px 30px 7px rgba(231, 70, 196, 0.22);
-    cursor: pointer;
-    transform: translateY(15px) */
-
-
    
-      /*width: 300px; */
-     /* background-color: #e4856e;
-    /* text-transform: capitalize; */
 }
 
 
 .dogcard::before{
-    /* content:"";
-    position: absolute;
-    top: 0;
-    left: 0;
-    display: block;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(to bottom,rgba(212, 49, 177, 0.5),rgb(241, 68, 232));
-    z-index: 2;
-    transition: 0.5s all;
-    opacity:0; */
+
 }
-
-/* .dogcard:hover:before{
-    opacity: 1;
-}
- */
-
-
-
-
-
-
-
 
 .titleName{
     color: #070707;
@@ -102,33 +56,12 @@
     white-space: nowrap; 
     text-overflow: ellipsis; 
    overflow: hidden;
-   font-family:"Helvetica";
+   font-family:"Carlito";
 
 }
 
 .cardImage{
-    /* width:200px; 
-    height:200px;
-    border-radius: 10%;
-    justify-content: center;
-    border-style:outset;
-    border-color: rgba(99, 135, 182, 0.781);
-    border-width: 7px;
 
-    object-fit: cover */
-    
-/* margin: auto;
-    object-fit: cover;
-    height: 100%;
-    width: 100%; */
-/* 
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    position: absolute;
-    top: 0;
-    left: 0;
- */
     width: 250px;    
     height:200px;
     border-radius: 5%;
@@ -136,10 +69,9 @@
     border-style: double;
     border-color: rgba(8, 8, 8, 0.781);
 
-    /* border-width: 5px; */
 }
 .subtitle{
-    font-family:"Helvetica";
+    font-family:"Carlito";
 }
 .tempCard{
     color: #0c0c0c;
@@ -147,11 +79,11 @@
     border-radius: 10%;
     padding: 5px;
     text-decoration: inherit;
-    height: 80px;
+    height: 90px;
 font-size: 15px;
-font-family:"Helvetica";     text-align: center;
-  /* white-space: nowrap; 
-   text-overflow: ellipsis;  */
+font-family:"Carlito";   
+  text-align: center;
+
   overflow: hidden;
   padding: 15px;
 }
@@ -163,11 +95,11 @@ font-family:"Helvetica";     text-align: center;
     color: #0c0c0c;
     justify-content: center;
     border-radius: 10%;
-    /* padding: 5px; */
+  
     text-decoration: inherit;
-    /* margin-top: 7px; */
+   
 }
  
 p{
-    font-family:"Helvetica";
+    font-family:"Carlito";
 }

@@ -28,7 +28,7 @@ export default function Card({
           <p className="tempCard">
             <strong>Temperament</strong>
             <br />
-            {temperament ? temperament.join(" - ") : "No temperaments"}
+            {temperament ? temperament.join(" | ") : "No temperaments"}
           </p>
           <br />
           <p className="weightCard">
