@@ -5,15 +5,7 @@
     }
 
 .container{
-    /* display: flex;
-    width: 0%;
-    justify-content: space-around;
-    grid-column-gap: 7rem;
-    grid-row-gap: 3rem;
-    display: grid;
-    grid-template-columns: 200px 200px 200px 200px;
-    margin-left: 1.5rem;
-    padding-bottom: 40px; */
+
 }
 
 .dogcard{
@@ -21,17 +13,13 @@
     border-radius: 2%;
     margin: 20px;
     background-color: #ffb5a7;
-    /* box-shadow: 0 1rem 1rem rgba(0, 0, 0, 0.3); */
+
     backdrop-filter: blur(1rem);
     text-align: center;
     box-shadow: 0px 0px 5px 5px rgba(0, 0, 0, 0.3);  
     height: 400px;
     text-decoration: none;
-   /* border: 1px solid #e1ecf7; */
-   /* background-color: #d5bdaf; */
-   /* background-color: #ffdab9; */
-    /* background-color: #8a817c; */
-   /*     background-color: #E1DAD2; */
+   
 }
 
 .dogcard:hover {
@@ -46,7 +34,6 @@
 
 .titleName{
     color: #070707;
-    /* font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; */
     font-size: 24px;
     bottom: 10%;
     top: 20%; 

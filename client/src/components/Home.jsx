@@ -36,7 +36,7 @@ export default function Home() {
   const lastDog = currentPage * dogPerPage;
   const firstDog = lastDog - dogPerPage;
 
- 
+ const totalPage = Math.ceil(allDogs.length / dogPerPage)
 
   const paginate = (pgNumber) => {
     setCurrentPage(pgNumber);
@@ -123,11 +123,12 @@ export default function Home() {
                 <button className="numberButton" onClick={handlePrev}>
                   «
                 </button>
-                <Paginado
+                <p className="pageNumber">{currentPage} de {totalPage} </p>
+                {/* <Paginado
                 dogsPerPage={dogPerPage}
                 allDogs={allDogs.length}
                 paginate={paginate}
-              />
+              /> */}
                 <button className="numberButton" onClick={handleNext}>
                   »
                 </button>             

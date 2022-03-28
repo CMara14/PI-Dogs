@@ -22,6 +22,7 @@ display: flex;
   align-items: center;
   justify-content: center;
 }
+
 .numberButton{
   border-radius: 4px;
   width: 100%;
@@ -36,8 +37,14 @@ background-color: rgb(230, 159, 159);
 color: black; 
 }
 
-
 .numberButton:focus{
   background-color: #a08369;
   color: white;
 }
+
+.pageNumber{
+  font-family:"Carlito";
+  
+}
+
+
