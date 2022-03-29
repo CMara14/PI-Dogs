@@ -13,7 +13,6 @@
     border-radius: 2%;
     margin: 20px;
     background-color: #ffb5a7;
-
     backdrop-filter: blur(1rem);
     text-align: center;
     box-shadow: 0px 0px 5px 5px rgba(0, 0, 0, 0.3);  
@@ -70,7 +69,6 @@
 font-size: 15px;
 font-family:"Carlito";   
   text-align: center;
-
   overflow: hidden;
   padding: 15px;
 }

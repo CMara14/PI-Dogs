@@ -51,3 +51,18 @@ background-color: #fae1dd;
         background-color:  #362D25;
         cursor: pointer;      
 }
+
+.textPage{
+    margin-bottom: 20px;
+    font-size: 30px;
+    justify-content: space-evenly;
+    display: flex;
+    align-items: stretch;
+    padding: 0px 20px;
+    font-weight: bolder;
+    color: #362D25;
+}
+
+.pageNumber{
+    font-family:"Carlito";    
+  }

@@ -36,7 +36,7 @@ export default function Home() {
   const lastDog = currentPage * dogPerPage;
   const firstDog = lastDog - dogPerPage;
 
- const totalPage = Math.ceil(allDogs.length / dogPerPage)
+  const totalPage = Math.ceil(allDogs.length / dogPerPage);
 
   const paginate = (pgNumber) => {
     setCurrentPage(pgNumber);
@@ -73,7 +73,6 @@ export default function Home() {
     setCurrentPage(1);
   }
 
-
   function handleNext() {
     const totalDogs = allDogs.length;
     const nextPage = currentPage + 1;
@@ -81,7 +80,6 @@ export default function Home() {
     if (complete > totalDogs) return;
     else {
       setCurrentPage(nextPage);
-      
     }
   }
 
@@ -90,12 +88,10 @@ export default function Home() {
     if (prevPage <= 0) return;
     else {
       setCurrentPage(prevPage);
-    
-
     }
   }
 
-   if (load) {
+  if (load) {
     return <Loading />;
   }
 
@@ -123,7 +119,11 @@ export default function Home() {
                 <button className="numberButton" onClick={handlePrev}>
                   «
                 </button>
-                <p className="pageNumber">{currentPage} de {totalPage} </p>
+                <div className="textPage">
+                  <p className="pageNumber">
+                    {currentPage} de {totalPage}{" "}
+                  </p>
+                </div>
                 {/* <Paginado
                 dogsPerPage={dogPerPage}
                 allDogs={allDogs.length}
@@ -131,7 +131,7 @@ export default function Home() {
               /> */}
                 <button className="numberButton" onClick={handleNext}>
                   »
-                </button>             
+                </button>
               </div>
             </div>
           </div>

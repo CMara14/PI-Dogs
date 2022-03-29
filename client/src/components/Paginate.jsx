@@ -9,8 +9,12 @@ export default function Paginado({ dogsPerPage, allDogs, paginate }) {
   }
 
   return (
+
+    
     <div className="containerPaginado">
       <div className="paginado">
+
+
         {pageNumbers &&
           pageNumbers.map((number) => (
             <div className="number" key={number}>

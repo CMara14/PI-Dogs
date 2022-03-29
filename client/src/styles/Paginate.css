@@ -13,6 +13,7 @@ display: flex;
     justify-content: center;
 }
 
+
 .number{
   width: 35px;
   height: 35px;
@@ -42,9 +43,5 @@ color: black;
   color: white;
 }
 
-.pageNumber{
-  font-family:"Carlito";
-  
-}
 
 
